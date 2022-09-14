@@ -17,6 +17,12 @@
             android:name=".Ofertarcomida"
             android:exported="false" />
         <activity
+            android:name=".Consumidor"
+            android:exported="false" />
+        <activity
+            android:name=".Vendedor"
+            android:exported="false" />
+        <activity
             android:name=".SigIn"
             android:exported="false" />
         <activity

@@ -2,9 +2,12 @@ package com.example.rapicoop.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
 
 public class InsertarUsuario extends RapicoopDatabase{
 
@@ -38,5 +41,33 @@ public class InsertarUsuario extends RapicoopDatabase{
         }
 
         return id;
+    }
+
+    public String devolver(String psw, String user){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+        Cursor cursorUsuarios = null;
+        String rol = "nada";
+
+        cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE usuario LIKE '" + user + "' AND password LIKE '" + psw + "'",null);
+
+        cursorUsuarios.moveToFirst();
+        rol = cursorUsuarios.getString(7);
+
+        return rol;
+    }
+
+    public Boolean verificar(String psw, String user){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+        Cursor cursorUsuarios = null;
+        String rol = null;
+
+        cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE usuario LIKE '" + user + "' AND password LIKE '" + psw + "'",null);
+
+
+        return cursorUsuarios.moveToFirst();
     }
 }

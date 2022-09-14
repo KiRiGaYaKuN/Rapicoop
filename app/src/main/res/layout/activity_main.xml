@@ -7,7 +7,7 @@
     tools:context=".LogIn">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/ingresar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -18,12 +18,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/password"
         android:background="@drawable/button_rounded"
         />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:layout_marginStart="32dp"
@@ -34,10 +34,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/usuario" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/usuario"
         android:layout_width="match_parent"
         android:layout_height="69dp"
         android:layout_marginStart="32dp"
@@ -65,7 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <ImageButton
         android:id="@+id/imageButton4"
@@ -74,6 +74,7 @@
         android:layout_marginTop="24dp"
         android:background="#00FFFFFF"
         android:scaleType="fitCenter"
+        android:text="Google"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3"
@@ -87,6 +88,7 @@
         android:layout_marginTop="24dp"
         android:background="#00FFFFFF"
         android:scaleType="fitCenter"
+        android:text="Twitter"
         app:layout_constraintStart_toEndOf="@+id/imageButton4"
         app:layout_constraintTop_toBottomOf="@+id/button3"
         app:srcCompat="@drawable/twitter" />
@@ -99,6 +101,7 @@
         android:layout_marginEnd="32dp"
         android:background="#00FFFFFF"
         android:scaleType="fitCenter"
+        android:text="Facebook"
         app:layout_constraintEnd_toStartOf="@+id/imageButton4"
         app:layout_constraintTop_toBottomOf="@+id/button3"
         app:srcCompat="@drawable/facebook" />
