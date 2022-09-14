@@ -30,7 +30,7 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(LogIn.this, Ofertarcomida.class);
+                Intent i = new Intent(LogIn.this, LogIn.class);
                 startActivity(i);
             }
         });
