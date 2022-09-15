@@ -9,18 +9,24 @@
 
     <Spinner
         android:id="@+id/spinner"
+        style="@style/Widget.AppCompat.TextView.SpinnerItem"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="#040404"
+        android:backgroundTint="#92CC7A7A"
+        android:background="@drawable/style_borde"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:lines="1"
         android:contentDescription="@string/app_name"
-        android:textColor="#000000"
+        android:entries="@array/categoria"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
 
     <EditText
         android:id="@+id/precio"
@@ -31,6 +37,7 @@
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="Precio"
+        android:background="@drawable/style_borde"
         android:inputType="textPersonName"
         android:textColor="#000000"
         android:textColorHint="#000000"
@@ -39,18 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="172dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="24dp"
-        android:text=" insertar imagen archivos admitidos JPG PNG..."
-        android:textColor="#0B0B0B"
-        android:textColorHint="#000000"
-        android:textSize="8sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descripcion" />
+
 
     <EditText
         android:id="@+id/ubicacion"
@@ -64,23 +60,25 @@
         android:inputType="textPersonName"
         android:textColor="#000000"
         android:textColorHint="#000000"
+        android:background="@drawable/style_borde"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/subir"
         android:layout_width="69dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
         android:backgroundTint="#B3B3B3"
         android:text="Subir"
         android:textSize="8sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/seleccion"
         app:layout_constraintTop_toBottomOf="@+id/descripcion" />
 
     <EditText
@@ -93,6 +91,7 @@
         android:ems="10"
         android:gravity="start|top"
         android:hint="Descripción del producto"
+        android:background="@drawable/style_borde"
         android:inputType="textMultiLine"
         android:textColor="#000000"
         android:textColorHint="#000000"
@@ -113,10 +112,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
@@ -124,6 +123,7 @@
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="Nombre del alimento"
+        android:background="@drawable/style_borde"
         android:inputType="textPersonName"
         android:textColor="#000000"
         android:textColorHint="#000000"
@@ -132,17 +132,18 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/enviar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:backgroundTint="#0C0C0C"
         android:text="Enviar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintTop_toBottomOf="@+id/seleccion"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -153,5 +154,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/comida_rapida" />
+
+    <ImageView
+        android:id="@+id/seleccion"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="508dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,7 +27,7 @@ public class LogIn extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         RapicoopDatabase rapidb = new RapicoopDatabase(LogIn.this);
-        SQLiteDatabase db = rapidb.getWritableDatabase();
+        // SQLiteDatabase db = rapidb.getWritableDatabase();
 
         sigin =(Button)findViewById(R.id.sigin);
         ingresar = (Button) findViewById(R.id.ingresar);
@@ -40,7 +40,7 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(LogIn.this, LogIn.class);
+                Intent i = new Intent(LogIn.this, SigIn.class);
                 startActivity(i);
             }
         });
