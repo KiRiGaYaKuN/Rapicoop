@@ -13,12 +13,11 @@
         android:fontFamily="sans-serif-condensed"
         android:text="Consumidor"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#E91E1E"
+        android:textColor="#3AB0FF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.652"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.067" />
+        app:layout_constraintVertical_bias="0.069" />
 </androidx.constraintlayout.widget.ConstraintLayout>

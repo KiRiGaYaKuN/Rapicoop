@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!---   PALETA DE COLOR DE LA APP https://colorhunt.co/palette/f9f2ed3ab0ffffb562f87474    -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LogIn">
+    tools:context=".LogIn"
+    android:background="#F9F2ED">
 
     <Button
         android:id="@+id/ingresar"
@@ -13,14 +15,14 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="#FF5722"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="#3AB0FF"
         android:text="Ingresar"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        android:background="@drawable/button_rounded"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <EditText
         android:id="@+id/password"
@@ -60,8 +62,9 @@
         android:layout_marginTop="76dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/button_rounded"
-        android:backgroundTint="#FF5722"
+        android:backgroundTint="#3AB0FF"
         android:text="Crear una cuenta"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="#FF5722"
+        android:background="#F87474"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -126,6 +129,8 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/button_border"
         android:text="¿Olvidó su contraseña?"
+        android:textStyle="bold"
+        android:backgroundTint="#3AB0FF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
