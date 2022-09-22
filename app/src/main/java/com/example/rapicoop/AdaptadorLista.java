@@ -58,7 +58,7 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHold
 
         }
     void bindData(final Listadeelementos item) {
-            //Icono.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
+            Icono.setImageBitmap(item.getImg());
             nombrerestaurante.setText(item.getNombrerestaurante());
             horario.setText(item.getHorario());
             estadorestaurante.setText(item.getEstado());

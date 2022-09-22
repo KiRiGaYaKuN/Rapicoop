@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -57,7 +59,8 @@ public class Ofertasconsumidor extends AppCompatActivity {
 
         for (Oferta x: listaofertas) {
             String palo = "" + x.getPrecio();
-            elements.add(new Listadeelementos("#FFB562", x.getNombre(), x.getUbicacion(), palo));
+            Bitmap bim = BitmapFactory.decodeByteArray(x.getImagen(),0,x.getImagen().length);
+            elements.add(new Listadeelementos(bim, x.getNombre(), x.getUbicacion(), palo));
         }
 
         AdaptadorLista adaptadorLista = new AdaptadorLista(elements, this);

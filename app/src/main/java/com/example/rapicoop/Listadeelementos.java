@@ -1,28 +1,22 @@
 package com.example.rapicoop;
 
-import androidx.annotation.NonNull;
+import android.graphics.Bitmap;
 
 public class Listadeelementos {
 
-    //public String color;
+    private Bitmap img;
     public String nombrerestaurante;
     public String horario;
     public String estado;
 
-    public Listadeelementos(String color, String nombrerestaurante, String horario, String estado) {
-        //this.color = color;
+    public Listadeelementos(Bitmap img, String nombrerestaurante, String horario, String estado) {
+        this.setImg(img);
         this.nombrerestaurante = nombrerestaurante;
         this.horario = horario;
         this.estado = estado;
     }
 
-    //public String getColor() {
-        //return color;
-    //}
 
-    //public void setColor(String color) {
-        //this.color = color;
-    //}
 
     public String getNombrerestaurante() {
         return nombrerestaurante;
@@ -46,6 +40,14 @@ public class Listadeelementos {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Bitmap getImg() {
+        return img;
+    }
+
+    public void setImg(Bitmap img) {
+        this.img = img;
     }
 }
 

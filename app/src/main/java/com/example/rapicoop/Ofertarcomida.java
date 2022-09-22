@@ -105,6 +105,7 @@ public class Ofertarcomida extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
         byte[] bytearray = stream.toByteArray();
         return bytearray;
+
     }
 
     @Override
