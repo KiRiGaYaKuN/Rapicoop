@@ -55,12 +55,12 @@ public class LogIn extends AppCompatActivity {
                 if (iu.verificar(pasword.getText().toString(), usuario.getText().toString())) {
 
                     String rol = "vendedor";
-                    if(iu.devolver(pasword.getText().toString(), usuario.getText().toString()).equals("Vendedor")) {
+                    if(iu.devolver(usuario.getText().toString()).equals("Vendedor")) {
                         Intent i = new Intent(LogIn.this, Vendedor.class);
                         i.putExtra(Vendedor.EXTRA_MESSAGE, usuario.getText().toString());
                         startActivity(i);
                     }
-                    if(iu.devolver(pasword.getText().toString(), usuario.getText().toString()).equals("Consumidor")) {
+                    if(iu.devolver(usuario.getText().toString()).equals("Consumidor")) {
                         Intent i = new Intent(LogIn.this, Consumidor.class);
                         i.putExtra(Consumidor.EXTRA_MESSAGE, usuario.getText().toString());
                         startActivity(i);

@@ -10,6 +10,7 @@ import android.widget.Button;
 public class Vendedor extends AppCompatActivity {
 
     Button ofertar;
+    Button consulta;
     public static final String EXTRA_MESSAGE="mesagge";
 
     @Override
@@ -18,6 +19,7 @@ public class Vendedor extends AppCompatActivity {
         setContentView(R.layout.activity_vendedor);
 
         ofertar = (Button) findViewById(R.id.OfertarComida);
+        consulta = (Button) findViewById(R.id.consultarOfertas);
 
         Intent intent=getIntent();
         String usuario = intent.getStringExtra(EXTRA_MESSAGE);
@@ -28,6 +30,16 @@ public class Vendedor extends AppCompatActivity {
 
 
                 Intent i = new Intent(Vendedor.this, Ofertarcomida.class);
+                i.putExtra(Ofertarcomida.EXTRA_MESSAGE, usuario);
+                startActivity(i);
+            }
+        });
+
+        consulta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(Vendedor.this, Ofertasconsumidor.class);
                 i.putExtra(Ofertarcomida.EXTRA_MESSAGE, usuario);
                 startActivity(i);
             }

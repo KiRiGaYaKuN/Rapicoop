@@ -28,7 +28,7 @@ public class Consumidor extends AppCompatActivity {
 
 
                 Intent i = new Intent(Consumidor.this, Ofertasconsumidor.class);
-    //            i.putExtra(Ofertarcomida.EXTRA_MESSAGE, usuario);
+                i.putExtra(Ofertarcomida.EXTRA_MESSAGE, usuario);
                 startActivity(i);
             }
         });

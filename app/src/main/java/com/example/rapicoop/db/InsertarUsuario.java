@@ -71,14 +71,14 @@ public class InsertarUsuario extends RapicoopDatabase{
         return id;
     }
 
-    public String devolver(String psw, String user){
+    public String devolver(String user){
 
         RapicoopDatabase rapidb = new RapicoopDatabase(context);
         SQLiteDatabase db = rapidb.getWritableDatabase();
         Cursor cursorUsuarios = null;
         String rol = "nada";
 
-        cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE usuario LIKE '" + user + "' AND password LIKE '" + psw + "'",null);
+        cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE usuario LIKE '" + user + "'",null);
 
         cursorUsuarios.moveToFirst();
         rol = cursorUsuarios.getString(7);
@@ -99,7 +99,7 @@ public class InsertarUsuario extends RapicoopDatabase{
         return cursorUsuarios.moveToFirst();
     }
 
-    public ArrayList<Oferta> consulta(){
+    public ArrayList<Oferta> consultaconsume(){
 
         RapicoopDatabase rapidb = new RapicoopDatabase(context);
         SQLiteDatabase db = rapidb.getWritableDatabase();
@@ -110,6 +110,34 @@ public class InsertarUsuario extends RapicoopDatabase{
         Cursor cursoroferta = null;
 
         cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_OFERTA,null);
+
+        if (cursoroferta.moveToFirst()){
+            do {
+                oferta = new Oferta();
+                oferta.setNombre(cursoroferta.getString(2));
+                oferta.setPrecio(cursoroferta.getInt(4));
+                oferta.setUbicacion(cursoroferta.getString(5));
+                oferta.setImagen(cursoroferta.getBlob(7));
+                listaofertas.add(oferta);
+            }   while (cursoroferta.moveToNext());
+        }
+
+        cursoroferta.close();
+
+        return listaofertas;
+    }
+
+    public ArrayList<Oferta> consultavende(String usu){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+
+        ArrayList<Oferta> listaofertas = new ArrayList<Oferta>();
+
+        Oferta oferta = null;
+        Cursor cursoroferta = null;
+
+        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_OFERTA + " WHERE usuario LIKE '" + usu + "'",null);
 
         if (cursoroferta.moveToFirst()){
             do {
