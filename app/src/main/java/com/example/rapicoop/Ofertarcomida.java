@@ -3,6 +3,9 @@ package com.example.rapicoop;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -15,7 +18,14 @@ import android.widget.Toast;
 
 import com.example.rapicoop.db.InsertarUsuario;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 public class Ofertarcomida extends AppCompatActivity {
+
+    public static final String EXTRA_MESSAGE="mesagge";
 
     Button subir;
     Button enviar;
@@ -26,6 +36,8 @@ public class Ofertarcomida extends AppCompatActivity {
     EditText precio;
     EditText ubicacion;
     EditText descripcion;
+
+    Bitmap bitmap;
 
 
     @Override
@@ -43,6 +55,8 @@ public class Ofertarcomida extends AppCompatActivity {
         ubicacion = (EditText) findViewById(R.id.ubicacion);
         descripcion = (EditText) findViewById(R.id.descripcion);
 
+        Intent intent=getIntent();
+        String usuario = intent.getStringExtra(EXTRA_MESSAGE);
 
 
         subir.setOnClickListener(new View.OnClickListener() {
@@ -59,19 +73,22 @@ public class Ofertarcomida extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String usrtxt = "nada";
+                String usrtxt = usuario;
                 String namext = name.getText().toString();
                 String catgtxt = String.valueOf(categoria.getSelectedItem());
                 int precionum = Integer.parseInt(precio.getText().toString());
                 String ubitxt = ubicacion.getText().toString();
                 String destxt = descripcion.getText().toString();
-                String image = "nada";
+                byte[] imagebyte = imageViewByte(image);
 
                 InsertarUsuario crearoferta = new InsertarUsuario(Ofertarcomida.this);
-                long id = crearoferta.nuevaOferta(usrtxt,namext,catgtxt,precionum,ubitxt,destxt, image);
+                long id = crearoferta.nuevaOferta(usrtxt,namext,catgtxt,precionum,ubitxt,destxt, imagebyte);
 
                 if(id > 0){
                     Toast.makeText(Ofertarcomida.this, "Oferta creada", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(Ofertarcomida.this, Vendedor.class);
+                    i.putExtra(Ofertarcomida.EXTRA_MESSAGE, usuario);
+                    startActivity(i);
                 }else {
                     Toast.makeText(Ofertarcomida.this, "Oferta rechazada", Toast.LENGTH_LONG).show();
                 }
@@ -79,7 +96,15 @@ public class Ofertarcomida extends AppCompatActivity {
             }
         });
 
+    }
 
+    private byte[] imageViewByte(ImageView picture){
+
+        Bitmap bitmap = ((BitmapDrawable)picture.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
+        byte[] bytearray = stream.toByteArray();
+        return bytearray;
     }
 
     @Override
@@ -87,7 +112,14 @@ public class Ofertarcomida extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode==RESULT_OK){
             Uri path = data.getData();
-            image.setImageURI(path);
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(path);
+                bitmap = BitmapFactory.decodeStream(inputStream);
+                image.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
         }
 
     }

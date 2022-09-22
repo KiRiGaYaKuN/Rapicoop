@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
+import com.example.rapicoop.Oferta;
+
 import java.util.ArrayList;
 
 public class InsertarUsuario extends RapicoopDatabase{
@@ -43,7 +45,7 @@ public class InsertarUsuario extends RapicoopDatabase{
         return id;
     }
 
-    public long nuevaOferta (String usuario, String nombre, String categoria, int precio, String ubicacion, String descripcion, String imagen){
+    public long nuevaOferta (String usuario, String nombre, String categoria, int precio, String ubicacion, String descripcion, byte[] imagen){
 
         long id = 0;
 
@@ -95,5 +97,33 @@ public class InsertarUsuario extends RapicoopDatabase{
 
 
         return cursorUsuarios.moveToFirst();
+    }
+
+    public ArrayList<Oferta> consulta(){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+
+        ArrayList<Oferta> listaofertas = new ArrayList<Oferta>();
+
+        Oferta oferta = null;
+        Cursor cursoroferta = null;
+
+        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_OFERTA,null);
+
+        if (cursoroferta.moveToFirst()){
+            do {
+                oferta = new Oferta();
+                oferta.setNombre(cursoroferta.getString(2));
+                oferta.setPrecio(cursoroferta.getInt(4));
+                oferta.setUbicacion(cursoroferta.getString(5));
+                oferta.setImagen(cursoroferta.getBlob(7));
+                listaofertas.add(oferta);
+            }   while (cursoroferta.moveToNext());
+        }
+
+        cursoroferta.close();
+
+        return listaofertas;
     }
 }
