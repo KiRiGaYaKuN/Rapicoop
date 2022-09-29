@@ -75,7 +75,7 @@
                 android:layout_weight="0"
                 android:background="@drawable/boton_redondo"
                 android:text="-"
-                android:textSize="35sp" />
+                android:textSize="34sp" />
 
             <TextView
                 android:id="@+id/contadorproducto"
