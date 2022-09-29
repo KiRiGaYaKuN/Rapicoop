@@ -10,6 +10,7 @@ import android.widget.Button;
 public class Consumidor extends AppCompatActivity {
 
     Button consulta;
+    Button carrito;
     public static final String EXTRA_MESSAGE="mesagge";
 
     @Override
@@ -18,6 +19,7 @@ public class Consumidor extends AppCompatActivity {
         setContentView(R.layout.activity_consumidor);
 
         consulta = (Button) findViewById(R.id.consultarcomida);
+        carrito = (Button) findViewById(R.id.consultacarrito);
 
         Intent intent=getIntent();
         String usuario = intent.getStringExtra(EXTRA_MESSAGE);
@@ -27,8 +29,18 @@ public class Consumidor extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                Intent i = new Intent(Consumidor.this, carritodecompras.class);
+                Intent i = new Intent(Consumidor.this, Ofertasconsumidor.class);
                 i.putExtra(Ofertarcomida.EXTRA_MESSAGE, usuario);
+                startActivity(i);
+            }
+        });
+
+        carrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent i = new Intent(Consumidor.this, carritodecompras.class);
                 startActivity(i);
             }
         });

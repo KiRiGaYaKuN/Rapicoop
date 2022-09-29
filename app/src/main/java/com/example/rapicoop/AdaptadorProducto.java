@@ -19,10 +19,10 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
     private Context context;
 
 
-    public AdaptadorProducto(ArrayList<Object> itemList, Context context){
+    public AdaptadorProducto(List<Listaproducto> itemList, Context context){
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
-        //this.mData = itemList;
+        this.mData = itemList;
 
     }
 
@@ -48,17 +48,17 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
 
         ViewHolder(View itemView){
             super(itemView);
-            Icono = itemView.findViewById(R.id.Icono);
+/*          Icono = itemView.findViewById(R.id.Icono);
             nproducto = itemView.findViewById(R.id.item_nombre);
             precio = itemView.findViewById(R.id.item_precio);
-            descripcion = itemView.findViewById(R.id.item_descripcion);
+            descripcion = itemView.findViewById(R.id.item_descripcion);*/
 
         }
         void bindData(final Listaproducto item) {
-            Icono.setImageBitmap(item.getImg());
+/*            Icono.setImageBitmap(item.getImg());
             nproducto.setText(item.getnproducto());
             precio.setText(item.getprecio());
-            descripcion.setText(item.getdescripcion());
+            descripcion.setText(item.getdescripcion()); */
         }
 
     }
