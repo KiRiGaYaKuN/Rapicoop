@@ -5,21 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
-    app:cardCornerRadius="20dp"
     android:elevation="4dp"
+    app:cardCornerRadius="20dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:animateLayoutChanges="true"
         android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#BCE4FF"
             android:orientation="horizontal"
-            android:padding="6dp"
-            android:background="#BCE4FF">
+            android:padding="6dp">
 
             <ImageView
                 android:id="@+id/Icono"
@@ -30,34 +31,35 @@
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp"
                 app:srcCompat="@drawable/comida_rapida" />
-                <LinearLayout
-                    android:id="@+id/linearLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_toEndOf="@+id/Icono"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="4dp"
-                    >
 
-                    <TextView
-                        android:id="@+id/nombrerestaurante"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
-                        android:text="El Corral Hamburguesas"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/textohorario"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Todos los dias 11am-9pm"
-                            android:textSize="18sp"/>
-                </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/Icono"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nombrerestaurante"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="El Corral Hamburguesas"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textohorario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Todos los dias 11am-9pm"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/estadorestaurante"
@@ -84,7 +86,6 @@
         </RelativeLayout>
 
     </LinearLayout>
-
 
 
 </androidx.cardview.widget.CardView>

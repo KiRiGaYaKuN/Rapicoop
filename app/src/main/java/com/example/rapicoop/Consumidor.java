@@ -27,7 +27,7 @@ public class Consumidor extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                Intent i = new Intent(Consumidor.this, Ofertasconsumidor.class);
+                Intent i = new Intent(Consumidor.this, carritodecompras.class);
                 i.putExtra(Ofertarcomida.EXTRA_MESSAGE, usuario);
                 startActivity(i);
             }
