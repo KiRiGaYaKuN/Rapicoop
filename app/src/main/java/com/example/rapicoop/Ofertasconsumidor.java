@@ -9,6 +9,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.example.rapicoop.db.InsertarUsuario;
@@ -22,6 +24,8 @@ public class Ofertasconsumidor extends AppCompatActivity {
     public static final String EXTRA_MESSAGE="mesagge";
     List<Listadeelementos> elements;
     ArrayList<Oferta> listaofertas;
+    RecyclerView recyclerView;
+    AdaptadorLista adaptadorLista;
 
     TextView usu;
     TextView tipo;
@@ -44,11 +48,22 @@ public class Ofertasconsumidor extends AppCompatActivity {
         usu.setText(usuario);
         if (rol.equals("Vendedor")){
             listaofertas = iu.consultavende(usuario);
+            init();
         }else{
             listaofertas = iu.consultaconsume();
-        }
             init();
+        }
 
+
+        adaptadorLista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Oferta oferta = listaofertas.get(recyclerView.getChildAdapterPosition(view));
+                Intent i = new Intent(Ofertasconsumidor.this, DescripcionOferta.class);
+                i.putExtra(DescripcionOferta.EXTRA_MESSAGE, oferta.getNombre());
+                startActivity(i);
+            }
+        });
 
     }
 
@@ -63,11 +78,12 @@ public class Ofertasconsumidor extends AppCompatActivity {
             elements.add(new Listadeelementos(bim, x.getNombre(), x.getUbicacion(), palo));
         }
 
-        AdaptadorLista adaptadorLista = new AdaptadorLista(elements, this);
-        RecyclerView recyclerView = findViewById(R.id.listaRecycler);
+        adaptadorLista = new AdaptadorLista(elements, this);
+        recyclerView = findViewById(R.id.listaRecycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adaptadorLista);
+
 
 
     }

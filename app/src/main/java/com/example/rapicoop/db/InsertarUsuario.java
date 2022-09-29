@@ -154,4 +154,30 @@ public class InsertarUsuario extends RapicoopDatabase{
 
         return listaofertas;
     }
+
+    public Oferta consultanombre(String usu){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+
+        Oferta oferta = null;
+        Cursor cursoroferta = null;
+
+        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_OFERTA + " WHERE nombre LIKE '" + usu + "'",null);
+
+        if (cursoroferta.moveToFirst()){
+            do {
+                oferta = new Oferta();
+                oferta.setNombre(cursoroferta.getString(2));
+                oferta.setDescripcion(cursoroferta.getString(6));
+                oferta.setPrecio(cursoroferta.getInt(4));
+                oferta.setUbicacion(cursoroferta.getString(5));
+                oferta.setImagen(cursoroferta.getBlob(7));
+            }   while (cursoroferta.moveToNext());
+        }
+
+        cursoroferta.close();
+
+        return oferta;
+    }
 }

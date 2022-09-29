@@ -19,6 +19,9 @@
             android:name=".carritodecompras"
             android:exported="false" />
         <activity
+            android:name=".DescripcionOferta"
+            android:exported="false" />
+        <activity
             android:name=".Ofertasconsumidor"
             android:exported="false" />
         <activity

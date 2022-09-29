@@ -16,7 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHolder>{
+public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHolder> implements View.OnClickListener {
+
+    private View.OnClickListener listener;
     private List<Listadeelementos> mData;
     private LayoutInflater mInflater;
     private Context context;
@@ -35,6 +37,7 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHold
     @Override
     public AdaptadorLista.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.lista_elementos, null);
+        view.setOnClickListener(this);
         return new AdaptadorLista.ViewHolder(view);
     }
 
@@ -45,6 +48,19 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHold
 
     public void setItems(List<Listadeelementos> items) {mData = items; }
 
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        if(listener != null){
+            listener.onClick(view);
+        }
+
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView Icono;
         TextView nombrerestaurante, horario, estadorestaurante;
@@ -54,14 +70,14 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHold
             Icono = itemView.findViewById(R.id.Icono);
             nombrerestaurante = itemView.findViewById(R.id.nombrerestaurante);
             horario = itemView.findViewById(R.id.textohorario);
-            estadorestaurante = itemView.findViewById(R.id.estadorestaurante);
+//            estadorestaurante = itemView.findViewById(R.id.estadorestaurante);
 
         }
     void bindData(final Listadeelementos item) {
             Icono.setImageBitmap(item.getImg());
             nombrerestaurante.setText(item.getNombrerestaurante());
             horario.setText(item.getHorario());
-            estadorestaurante.setText(item.getEstado());
+//            estadorestaurante.setText(item.getEstado());
     }
 
     }
