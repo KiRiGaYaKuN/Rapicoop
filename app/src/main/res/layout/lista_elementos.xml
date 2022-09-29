@@ -59,20 +59,27 @@
                             android:textSize="18sp"/>
                 </LinearLayout>
 
-            <TextView
+            <Button
                 android:id="@+id/estadorestaurante"
                 android:layout_width="66dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_toEndOf="@+id/linearLayout"
-                android:text="Abierto"
+                android:background="@drawable/button_rounded"
+                android:backgroundTint="#FFB562"
+                android:text="Agregar"
                 android:textAlignment="center"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="9dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.293" />
 
         </RelativeLayout>
 
