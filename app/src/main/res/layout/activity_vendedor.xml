@@ -7,6 +7,20 @@
     tools:context=".Vendedor"
     android:background="#F9F2ED">
 
+    <Button
+        android:id="@+id/consultarOfertas2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFB562"
+        android:text="Eliminar ofertas"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/consultarOfertas"
+        app:layout_constraintVertical_bias="0.046" />
+
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
@@ -43,13 +57,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#FFB562"
         android:text="Consultar mis ofertas"
         android:textStyle="bold"
-        android:backgroundTint="#FFB562"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/OfertarComida"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/OfertarComida" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
