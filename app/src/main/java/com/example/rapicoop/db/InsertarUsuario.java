@@ -71,6 +71,28 @@ public class InsertarUsuario extends RapicoopDatabase{
         return id;
     }
 
+    public long agregaCarrito (String vendedor, String usuario, int cantidad){
+
+        long id = 0;
+
+        try {
+
+            RapicoopDatabase rapidb = new RapicoopDatabase(context);
+            SQLiteDatabase db = rapidb.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            values.put("vendedor", vendedor);
+            values.put("cliente", usuario);
+            values.put("cantidad", cantidad);
+
+            id = db.insert(TABLE_CARRITO, null, values);
+        }catch (Exception ex){
+            ex.toString();
+        }
+
+        return id;
+    }
+
     public String devolver(String user){
 
         RapicoopDatabase rapidb = new RapicoopDatabase(context);
