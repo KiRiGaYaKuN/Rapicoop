@@ -4,9 +4,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.example.rapicoop.DescripcionOferta;
 import com.example.rapicoop.Oferta;
 
 import java.util.ArrayList;
@@ -71,7 +73,7 @@ public class InsertarUsuario extends RapicoopDatabase{
         return id;
     }
 
-    public long agregaCarrito (String vendedor, String usuario, int cantidad){
+    public long agregaCarrito (String usuario, String vendedor, String nombre, int cantidad){
 
         long id = 0;
 
@@ -83,6 +85,7 @@ public class InsertarUsuario extends RapicoopDatabase{
             ContentValues values = new ContentValues();
             values.put("vendedor", vendedor);
             values.put("cliente", usuario);
+            values.put("oferta", nombre);
             values.put("cantidad", cantidad);
 
             id = db.insert(TABLE_CARRITO, null, values);
@@ -91,6 +94,45 @@ public class InsertarUsuario extends RapicoopDatabase{
         }
 
         return id;
+    }
+
+    public boolean aumentacant (String usu, String vende, String name){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+        boolean correct = false;
+        Cursor cursorUsuarios = null;
+
+        try {
+
+            cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_CARRITO + " WHERE vendedor LIKE '" + vende + "' AND cliente LIKE '" + usu + "' AND oferta LIKE '" + name + "'",null);
+
+            int ident = 0;
+            int cant = 0;
+
+            if (cursorUsuarios.moveToFirst()){
+                do {
+                    ident = cursorUsuarios.getInt(0);
+                    cant = cursorUsuarios.getInt(4) + 1;
+                }   while (cursorUsuarios.moveToNext());
+            }
+
+
+            try {
+                db.execSQL("UPDATE " + TABLE_CARRITO + " SET cantidad = '" + cant + "' WHERE id = '" + ident + "'");
+                correct = true;
+            }catch (Exception ex){
+                ex.toString();
+                correct = false;
+            }finally {
+                db.close();
+            }
+
+        }catch (Exception ex){
+            ex.toString();
+        }
+
+        return correct;
     }
 
     public String devolver(String user){
@@ -190,6 +232,7 @@ public class InsertarUsuario extends RapicoopDatabase{
         if (cursoroferta.moveToFirst()){
             do {
                 oferta = new Oferta();
+                oferta.setUsuario(cursoroferta.getString(1));
                 oferta.setNombre(cursoroferta.getString(2));
                 oferta.setDescripcion(cursoroferta.getString(6));
                 oferta.setPrecio(cursoroferta.getInt(4));
@@ -202,4 +245,19 @@ public class InsertarUsuario extends RapicoopDatabase{
 
         return oferta;
     }
+
+    public Boolean verificacarro(String usu, String vende, String name){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+        Cursor cursorUsuarios = null;
+
+
+        cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_CARRITO + " WHERE vendedor LIKE '" + vende + "' AND cliente LIKE '" + usu + "'",null);
+
+
+        return cursorUsuarios.moveToFirst();
+    }
+
+
 }

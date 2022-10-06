@@ -60,7 +60,8 @@ public class Ofertasconsumidor extends AppCompatActivity {
             public void onClick(View view) {
                 Oferta oferta = listaofertas.get(recyclerView.getChildAdapterPosition(view));
                 Intent i = new Intent(Ofertasconsumidor.this, DescripcionOferta.class);
-                i.putExtra(DescripcionOferta.EXTRA_MESSAGE, oferta.getNombre());
+                String[] cap = {oferta.getNombre(),usuario};
+                i.putExtra(String.valueOf(DescripcionOferta.EXTRA_MESSAGE), cap);
                 startActivity(i);
             }
         });
