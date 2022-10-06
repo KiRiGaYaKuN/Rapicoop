@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.example.rapicoop.Carrito;
 import com.example.rapicoop.DescripcionOferta;
 import com.example.rapicoop.Oferta;
 
@@ -107,6 +108,7 @@ public class InsertarUsuario extends RapicoopDatabase{
 
             cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_CARRITO + " WHERE vendedor LIKE '" + vende + "' AND cliente LIKE '" + usu + "' AND oferta LIKE '" + name + "'",null);
 
+
             int ident = 0;
             int cant = 0;
 
@@ -120,6 +122,7 @@ public class InsertarUsuario extends RapicoopDatabase{
 
             try {
                 db.execSQL("UPDATE " + TABLE_CARRITO + " SET cantidad = '" + cant + "' WHERE id = '" + ident + "'");
+
                 correct = true;
             }catch (Exception ex){
                 ex.toString();
@@ -246,6 +249,34 @@ public class InsertarUsuario extends RapicoopDatabase{
         return oferta;
     }
 
+    public ArrayList<Carrito> consultacarro(String usu){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+
+        ArrayList<Carrito> listacarrito = new ArrayList<Carrito>();
+
+        Carrito carro = null;
+        Cursor cursoroferta = null;
+
+        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_CARRITO + " WHERE cliente LIKE '" + usu + "'",null);
+
+        if (cursoroferta.moveToFirst()){
+            do {
+                carro = new Carrito();
+                carro.setVendedor(cursoroferta.getString(1));
+                carro.setConsumidor(cursoroferta.getString(2));
+                carro.setProducto(cursoroferta.getString(3));
+                carro.setCantidad(cursoroferta.getInt(4));
+                listacarrito.add(carro);
+            }   while (cursoroferta.moveToNext());
+        }
+
+        cursoroferta.close();
+
+        return listacarrito;
+    }
+
     public Boolean verificacarro(String usu, String vende, String name){
 
         RapicoopDatabase rapidb = new RapicoopDatabase(context);
@@ -253,7 +284,7 @@ public class InsertarUsuario extends RapicoopDatabase{
         Cursor cursorUsuarios = null;
 
 
-        cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_CARRITO + " WHERE vendedor LIKE '" + vende + "' AND cliente LIKE '" + usu + "'",null);
+        cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_CARRITO + " WHERE vendedor LIKE '" + vende + "' AND cliente LIKE '" + usu + "' AND oferta LIKE '" + name + "'",null);
 
 
         return cursorUsuarios.moveToFirst();

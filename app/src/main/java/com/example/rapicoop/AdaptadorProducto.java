@@ -44,21 +44,23 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
 
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView Icono;
-        TextView nproducto, precio, descripcion;
+        TextView nproducto, precio, descripcion, cantidad;
 
         ViewHolder(View itemView){
             super(itemView);
-/*          Icono = itemView.findViewById(R.id.Icono);
+          Icono = itemView.findViewById(R.id.icono);
             nproducto = itemView.findViewById(R.id.item_nombre);
             precio = itemView.findViewById(R.id.item_precio);
-            descripcion = itemView.findViewById(R.id.item_descripcion);*/
+            descripcion = itemView.findViewById(R.id.item_descripcion);
+            cantidad = itemView.findViewById(R.id.contadorproducto);
 
         }
         void bindData(final Listaproducto item) {
-/*            Icono.setImageBitmap(item.getImg());
+            Icono.setImageBitmap(item.getImg());
             nproducto.setText(item.getnproducto());
             precio.setText(item.getprecio());
-            descripcion.setText(item.getdescripcion()); */
+            descripcion.setText(item.getdescripcion());
+            cantidad.setText(item.getCantidad());
         }
 
     }

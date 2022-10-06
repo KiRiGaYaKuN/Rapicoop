@@ -28,9 +28,8 @@ public class Consumidor extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 Intent i = new Intent(Consumidor.this, Ofertasconsumidor.class);
-                i.putExtra(Ofertarcomida.EXTRA_MESSAGE, usuario);
+                i.putExtra(Ofertasconsumidor.EXTRA_MESSAGE, usuario);
                 startActivity(i);
             }
         });
@@ -39,8 +38,8 @@ public class Consumidor extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 Intent i = new Intent(Consumidor.this, carritodecompras.class);
+                i.putExtra(carritodecompras.EXTRA_MESSAGE, usuario);
                 startActivity(i);
             }
         });

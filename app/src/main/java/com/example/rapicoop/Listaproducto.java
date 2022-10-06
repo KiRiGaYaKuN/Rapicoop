@@ -8,15 +8,15 @@ public class Listaproducto {
         public String nproducto;
         public String precio;
         public String descripcion;
+        public String cantidad;
 
-        public Listaproducto(String img, String nproducto, String precio, String descripcion) {
-            //this.setImg(img);
+        public Listaproducto(Bitmap img, String nproducto, String precio, String descripcion, String cantidad) {
+            this.img = img;
             this.nproducto = nproducto;
             this.precio = precio;
             this.descripcion = descripcion;
+            this.cantidad = cantidad;
         }
-
-
 
         public String getnproducto() {
             return nproducto;
@@ -49,4 +49,12 @@ public class Listaproducto {
         public void setImg(Bitmap img) {
             this.img = img;
         }
+
+    public String getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(String cantidad) {
+        this.cantidad = cantidad;
+    }
 }
