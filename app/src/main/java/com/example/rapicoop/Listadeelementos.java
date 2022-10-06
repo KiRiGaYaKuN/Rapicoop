@@ -8,12 +8,14 @@ public class Listadeelementos {
     public String nombrerestaurante;
     public String horario;
     public String estado;
+    public String vendedor;
 
-    public Listadeelementos(Bitmap img, String nombrerestaurante, String horario, String estado) {
+    public Listadeelementos(Bitmap img, String nombrerestaurante, String horario, String estado, String vendedor) {
         this.setImg(img);
         this.nombrerestaurante = nombrerestaurante;
         this.horario = horario;
         this.estado = estado;
+        this.vendedor = vendedor;
     }
 
 
@@ -48,6 +50,14 @@ public class Listadeelementos {
 
     public void setImg(Bitmap img) {
         this.img = img;
+    }
+
+    public String getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(String vendedor) {
+        this.vendedor = vendedor;
     }
 }
 

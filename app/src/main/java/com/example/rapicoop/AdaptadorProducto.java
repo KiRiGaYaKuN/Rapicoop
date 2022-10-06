@@ -1,14 +1,20 @@
 package com.example.rapicoop;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.rapicoop.db.InsertarUsuario;
+import com.example.rapicoop.db.RapicoopDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +51,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView Icono;
         TextView nproducto, precio, descripcion, cantidad;
+        Button mas;
 
         ViewHolder(View itemView){
             super(itemView);
@@ -53,6 +60,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
             precio = itemView.findViewById(R.id.item_precio);
             descripcion = itemView.findViewById(R.id.item_descripcion);
             cantidad = itemView.findViewById(R.id.contadorproducto);
+            mas = (Button) itemView.findViewById(R.id.Buttonplus);
 
         }
         void bindData(final Listaproducto item) {
@@ -61,6 +69,27 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
             precio.setText(item.getprecio());
             descripcion.setText(item.getdescripcion());
             cantidad.setText(item.getCantidad());
+
+            mas.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view) {
+
+                    RapicoopDatabase rapidb = new RapicoopDatabase(context);
+                    InsertarUsuario iu = new InsertarUsuario(context);
+                    if (iu.verificacarro(item.getConsumidor(),item.getVendedor(),item.getnproducto())){
+
+                        if (iu.aumentacant(item.getConsumidor(),item.getVendedor(),item.getnproducto())){
+                            int sum = Integer.parseInt(cantidad.getText().toString())+1;
+                            cantidad.setText("" + sum);
+                            Toast.makeText(context, "Aumenta", Toast.LENGTH_LONG).show();
+                        }else {
+                            Toast.makeText(context, "No aumenta", Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                }
+            });
         }
 
     }

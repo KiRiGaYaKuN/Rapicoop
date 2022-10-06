@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.rapicoop.db.InsertarUsuario;
@@ -54,7 +55,6 @@ public class Ofertasconsumidor extends AppCompatActivity {
             init();
         }
 
-
         adaptadorLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,26 +66,26 @@ public class Ofertasconsumidor extends AppCompatActivity {
             }
         });
 
+
+
     }
 
     public void  init() {
         elements = new ArrayList<>();
 
-        //    elements.add(new Listadeelementos("#FFB562", "Papa Jhons", "Todos los dias 10am-10pm", "Abierto"));
 
         for (Oferta x: listaofertas) {
             String palo = "" + x.getPrecio();
             Bitmap bim = BitmapFactory.decodeByteArray(x.getImagen(),0,x.getImagen().length);
-            elements.add(new Listadeelementos(bim, x.getNombre(), x.getUbicacion(), palo));
+
+            elements.add(new Listadeelementos(bim, x.getNombre(), x.getUbicacion(), palo, x.getUsuario()));
         }
 
-        adaptadorLista = new AdaptadorLista(elements, this);
+        adaptadorLista = new AdaptadorLista(elements, this,usu.getText().toString());
         recyclerView = findViewById(R.id.listaRecycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adaptadorLista);
-
-
 
     }
 }

@@ -9,13 +9,17 @@ public class Listaproducto {
         public String precio;
         public String descripcion;
         public String cantidad;
+        public String consumidor;
+        public String vendedor;
 
-        public Listaproducto(Bitmap img, String nproducto, String precio, String descripcion, String cantidad) {
+        public Listaproducto(Bitmap img, String nproducto, String precio, String descripcion, String cantidad,String consumidor, String vendedor) {
             this.img = img;
             this.nproducto = nproducto;
             this.precio = precio;
             this.descripcion = descripcion;
             this.cantidad = cantidad;
+            this.consumidor = consumidor;
+            this.vendedor = vendedor;
         }
 
         public String getnproducto() {
@@ -56,5 +60,21 @@ public class Listaproducto {
 
     public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public String getConsumidor() {
+        return consumidor;
+    }
+
+    public void setConsumidor(String consumidor) {
+        this.consumidor = consumidor;
+    }
+
+    public String getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(String vendedor) {
+        this.vendedor = vendedor;
     }
 }

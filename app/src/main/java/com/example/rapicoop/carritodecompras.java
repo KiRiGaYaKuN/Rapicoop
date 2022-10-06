@@ -48,7 +48,7 @@ public class carritodecompras extends AppCompatActivity {
             String palo = "" + x.getCantidad();
             Oferta oferta = iu.consultanombre(x.getProducto());
             Bitmap bim = BitmapFactory.decodeByteArray(oferta.getImagen(),0,oferta.getImagen().length);
-            elements.add(new Listaproducto(bim, oferta.getNombre(), "$" + oferta.getPrecio(), oferta.getDescripcion(),"" + x.getCantidad()));
+            elements.add(new Listaproducto(bim, oferta.getNombre(), "$" + oferta.getPrecio(), oferta.getDescripcion(),"" + x.getCantidad(),x.getConsumidor(),x.getVendedor()));
         }
 
         AdaptadorProducto adaptadorProducto = new AdaptadorProducto(elements, this);

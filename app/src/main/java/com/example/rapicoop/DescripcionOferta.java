@@ -19,6 +19,7 @@ public class DescripcionOferta extends AppCompatActivity {
 
     public static final String[] EXTRA_MESSAGE = null;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
