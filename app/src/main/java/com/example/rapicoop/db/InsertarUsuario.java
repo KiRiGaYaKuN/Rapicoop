@@ -286,6 +286,53 @@ public class InsertarUsuario extends RapicoopDatabase{
         return correct;
     }
 
+    public boolean disminuircarrito (String usu, String vende, String name){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+        boolean correct = false;
+        Cursor cursorUsuarios = null;
+
+        try {
+
+            cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_CARRITO + " WHERE vendedor LIKE '" + vende + "' AND cliente LIKE '" + usu + "' AND oferta LIKE '" + name + "'",null);
+
+
+            int ident = 0;
+            int cant = 0;
+
+            if (cursorUsuarios.moveToFirst()){
+                do {
+                    ident = cursorUsuarios.getInt(0);
+                    cant = cursorUsuarios.getInt(4);
+                    if (cant > 1){
+                        cant--;
+                    }else {
+                        db.execSQL("DELETE FROM " + TABLE_CARRITO + " WHERE id = '" + ident + "'");
+                        return true;
+                    }
+                }   while (cursorUsuarios.moveToNext());
+            }
+
+
+            try {
+                db.execSQL("UPDATE " + TABLE_CARRITO + " SET cantidad = '" + cant + "' WHERE id = '" + ident + "'");
+
+                correct = true;
+            }catch (Exception ex){
+                ex.toString();
+                correct = false;
+            }finally {
+                db.close();
+            }
+
+        }catch (Exception ex){
+            ex.toString();
+        }
+
+        return correct;
+    }
+
     public Boolean verificacarro(String usu, String vende, String name){
 
         RapicoopDatabase rapidb = new RapicoopDatabase(context);

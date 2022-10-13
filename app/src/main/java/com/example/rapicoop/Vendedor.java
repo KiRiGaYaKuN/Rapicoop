@@ -11,6 +11,7 @@ public class Vendedor extends AppCompatActivity {
 
     Button ofertar;
     Button consulta;
+    Button eliminar;
     public static final String EXTRA_MESSAGE="mesagge";
 
     @Override
@@ -20,6 +21,7 @@ public class Vendedor extends AppCompatActivity {
 
         ofertar = (Button) findViewById(R.id.OfertarComida);
         consulta = (Button) findViewById(R.id.consultarOfertas);
+        eliminar = (Button) findViewById(R.id.eliminar);
 
         Intent intent=getIntent();
         String usuario = intent.getStringExtra(EXTRA_MESSAGE);
@@ -40,6 +42,16 @@ public class Vendedor extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent i = new Intent(Vendedor.this, Ofertasconsumidor.class);
+                i.putExtra(Ofertarcomida.EXTRA_MESSAGE, usuario);
+                startActivity(i);
+            }
+        });
+
+        eliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(Vendedor.this, eliminarofertav.class);
                 i.putExtra(Ofertarcomida.EXTRA_MESSAGE, usuario);
                 startActivity(i);
             }

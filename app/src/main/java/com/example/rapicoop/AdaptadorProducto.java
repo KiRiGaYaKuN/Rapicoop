@@ -1,6 +1,7 @@
 package com.example.rapicoop;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,7 +52,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView Icono;
         TextView nproducto, precio, descripcion, cantidad;
-        Button mas;
+        Button mas, menos;
 
         ViewHolder(View itemView){
             super(itemView);
@@ -61,6 +62,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
             descripcion = itemView.findViewById(R.id.item_descripcion);
             cantidad = itemView.findViewById(R.id.contadorproducto);
             mas = (Button) itemView.findViewById(R.id.Buttonplus);
+            menos = (Button) itemView.findViewById(R.id.Buttonminus);
 
         }
         void bindData(final Listaproducto item) {
@@ -82,7 +84,32 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
                         if (iu.aumentacant(item.getConsumidor(),item.getVendedor(),item.getnproducto())){
                             int sum = Integer.parseInt(cantidad.getText().toString())+1;
                             cantidad.setText("" + sum);
-                            Toast.makeText(context, "Aumenta", Toast.LENGTH_LONG).show();
+                        }else {
+                            Toast.makeText(context, "No aumenta", Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                }
+            });
+
+            menos.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view) {
+
+                    RapicoopDatabase rapidb = new RapicoopDatabase(context);
+                    InsertarUsuario iu = new InsertarUsuario(context);
+                    if (iu.verificacarro(item.getConsumidor(),item.getVendedor(),item.getnproducto())){
+
+                        if (iu.disminuircarrito(item.getConsumidor(),item.getVendedor(),item.getnproducto())){
+                            int men = Integer.parseInt(cantidad.getText().toString())-1;
+                            if (men <= 0){
+                                Intent i = new Intent(context, carritodecompras.class);
+                                i.putExtra(carritodecompras.EXTRA_MESSAGE, item.getConsumidor());
+                                context.startActivity(i);
+
+                            }
+                            cantidad.setText("" + men);
                         }else {
                             Toast.makeText(context, "No aumenta", Toast.LENGTH_LONG).show();
                         }

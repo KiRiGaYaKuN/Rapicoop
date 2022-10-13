@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.rapicoop.db.InsertarUsuario;
 import com.example.rapicoop.db.RapicoopDatabase;
@@ -58,6 +59,13 @@ public class carritodecompras extends AppCompatActivity {
         recyclerView.setAdapter(adaptadorProducto);
 
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        finish();
     }
 
 }
