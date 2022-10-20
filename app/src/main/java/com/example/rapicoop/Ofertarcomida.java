@@ -66,7 +66,7 @@ public class Ofertarcomida extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 intent.setType("image/");
                 startActivityForResult(intent.createChooser(intent,"Seleccione la imagen"),10);
-                            }
+            }
         });
 
         enviar.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +89,7 @@ public class Ofertarcomida extends AppCompatActivity {
                     Intent i = new Intent(Ofertarcomida.this, Vendedor.class);
                     i.putExtra(Ofertarcomida.EXTRA_MESSAGE, usuario);
                     startActivity(i);
+                    finish();
                 }else {
                     Toast.makeText(Ofertarcomida.this, "Oferta rechazada", Toast.LENGTH_LONG).show();
                 }
@@ -129,7 +130,6 @@ public class Ofertarcomida extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
 
-        finish();
     }
 
 }

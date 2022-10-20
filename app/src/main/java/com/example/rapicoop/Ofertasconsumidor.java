@@ -47,13 +47,16 @@ public class Ofertasconsumidor extends AppCompatActivity {
         tipo = (TextView) findViewById(R.id.tipo);
         tipo.setText(rol);
         usu.setText(usuario);
-        if (rol.equals("Vendedor")){
+
+
+        if(rol.equals("Vendedor")){
             listaofertas = iu.consultavende(usuario);
             init();
         }else{
             listaofertas = iu.consultaconsume();
             init();
         }
+
 
         adaptadorLista.setOnClickListener(new View.OnClickListener() {
             @Override

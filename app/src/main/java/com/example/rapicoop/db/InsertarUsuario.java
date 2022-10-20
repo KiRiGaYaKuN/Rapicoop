@@ -105,6 +105,38 @@ public class InsertarUsuario extends RapicoopDatabase{
         return id;
     }
 
+    public boolean eliminarOferta (String vende, String name){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+        boolean correct = false;
+        Cursor cursorUsuarios = null;
+
+        try {
+
+            cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_OFERTA + " WHERE usuario LIKE '" + vende + "' AND nombre LIKE '" + name + "'",null);
+
+            int ident = 0;
+
+            if (cursorUsuarios.moveToFirst()){
+                do {
+                    ident = cursorUsuarios.getInt(0);
+
+                        db.execSQL("DELETE FROM " + TABLE_OFERTA + " WHERE id = '" + ident + "'");
+                        correct = true;
+
+                }   while (cursorUsuarios.moveToNext());
+            }
+
+        }catch (Exception ex){
+            ex.toString();
+        }finally {
+            db.close();
+        }
+
+        return correct;
+    }
+
     //Consultas
 
     public ArrayList<Oferta> consultaconsume(){
