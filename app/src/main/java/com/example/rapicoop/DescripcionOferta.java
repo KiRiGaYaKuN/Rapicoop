@@ -59,26 +59,6 @@ public class DescripcionOferta extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-                AlertDialog.Builder alerta = new AlertDialog.Builder(DescripcionOferta.this);
-                alerta.setMessage("¿Esta seguro de eliminar el producto?")
-                        .setCancelable(false)
-                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel();
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel();
-                            }
-                        });
-                AlertDialog titulo = alerta.create();
-                titulo.setTitle("Eliminar");
-                titulo.show();
-
                 if (iu.verificacarro(cliente,oferta.getUsuario(),oferta.getNombre())){
 
                     if (iu.aumentacant(cliente,oferta.getUsuario(),nombre)){

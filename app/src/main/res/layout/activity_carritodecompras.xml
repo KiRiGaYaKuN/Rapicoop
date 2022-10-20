@@ -10,13 +10,15 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listadeproductos"
         android:layout_width="match_parent"
-        android:layout_height="385dp"
+        android:layout_height="0dp"
         android:layout_margin="5dp"
-        android:layout_marginTop="32dp"
         android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="4dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView12"
@@ -36,35 +38,46 @@
         android:layout_width="80dp"
         android:layout_height="74dp"
         android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/carrito_de_supermercado"
-        tools:layout_editor_absoluteX="165dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/mensajecarrito"
         android:layout_width="340dp"
         android:layout_height="52dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="10dp"
         android:text="En este momento no tienes ningun producto en el carrito..."
         android:textAlignment="center"
         android:textColor="#887B7B"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        tools:layout_editor_absoluteX="35dp"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/iroferta"
         android:layout_width="148dp"
         android:layout_height="53dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button_rounded"
         android:text="Ir a ofertas"
         android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mensajecarrito"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="131dp" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

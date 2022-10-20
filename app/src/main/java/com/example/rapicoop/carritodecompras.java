@@ -9,6 +9,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rapicoop.db.InsertarUsuario;
@@ -40,6 +42,25 @@ public class carritodecompras extends AppCompatActivity {
 
 
         init();
+
+        TextView mensaje = (TextView) findViewById(R.id.mensajecarrito);
+        Button boton = (Button) findViewById(R.id.iroferta);
+
+        if (elements.isEmpty()){
+
+            mensaje.setVisibility(View.VISIBLE);
+            boton.setVisibility(View.VISIBLE);
+
+        }
+
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(carritodecompras.this, Ofertasconsumidor.class);
+                i.putExtra(Ofertasconsumidor.EXTRA_MESSAGE, usuario);
+                startActivity(i);
+            }
+        });
 
     }
     public void init(){
