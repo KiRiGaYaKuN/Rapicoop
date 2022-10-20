@@ -1,7 +1,9 @@
 package com.example.rapicoop;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -40,7 +42,7 @@ public class DescripcionOferta extends AppCompatActivity {
         TextView descripcion = (TextView) findViewById(R.id.description);
         ImageView img = (ImageView) findViewById(R.id.picture);
 
-        Button agregar = (Button) findViewById(R.id.agregar);
+        Button eliminarbtn = (Button) findViewById(R.id.eliminarbtn);
 
         name.setText(oferta.getNombre());
         precio.setText("" + oferta.getPrecio());
@@ -52,11 +54,30 @@ public class DescripcionOferta extends AppCompatActivity {
         Bitmap bim = BitmapFactory.decodeByteArray(oferta.getImagen(),0,oferta.getImagen().length);
         img.setImageBitmap(bim);
 
-        agregar.setOnClickListener(new View.OnClickListener(){
+        eliminarbtn.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
 
+
+                AlertDialog.Builder alerta = new AlertDialog.Builder(DescripcionOferta.this);
+                alerta.setMessage("¿Esta seguro de eliminar el producto?")
+                        .setCancelable(false)
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        });
+                AlertDialog titulo = alerta.create();
+                titulo.setTitle("Eliminar");
+                titulo.show();
 
                 if (iu.verificacarro(cliente,oferta.getUsuario(),oferta.getNombre())){
 

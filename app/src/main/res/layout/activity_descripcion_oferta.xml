@@ -9,13 +9,13 @@
     tools:context=".DescripcionOferta">
 
     <Button
-        android:id="@+id/agregar"
+        android:id="@+id/eliminarbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="@drawable/button_rounded"
         android:backgroundTint="#3AB0FF"
-        android:text="Agregar"
+        android:text="Eliminar"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

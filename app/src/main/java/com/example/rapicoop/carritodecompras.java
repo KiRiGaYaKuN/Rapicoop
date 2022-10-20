@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.rapicoop.db.InsertarUsuario;
@@ -53,7 +54,9 @@ public class carritodecompras extends AppCompatActivity {
         }
 
         AdaptadorProducto adaptadorProducto = new AdaptadorProducto(elements, this);
+
         RecyclerView recyclerView = findViewById(R.id.listadeproductos);
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adaptadorProducto);

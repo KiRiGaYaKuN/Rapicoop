@@ -39,7 +39,7 @@ public class RapicoopDatabase extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE " + TABLE_NAME);
         db.execSQL("DROP TABLE " + TABLE_OFERTA);
-        db.execSQL("DROP TABLE " + TABLE_CARRITO);
+        //db.execSQL("DROP TABLE " + TABLE_CARRITO);
         onCreate(db);
     }
 }
