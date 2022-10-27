@@ -156,6 +156,7 @@ public class InsertarUsuario extends RapicoopDatabase{
                 oferta = new Oferta();
                 oferta.setUsuario(cursoroferta.getString(1));
                 oferta.setNombre(cursoroferta.getString(2));
+                oferta.setCategoria(cursoroferta.getString(3));
                 oferta.setPrecio(cursoroferta.getInt(4));
                 oferta.setUbicacion(cursoroferta.getString(5));
                 oferta.setImagen(cursoroferta.getBlob(7));
@@ -238,12 +239,17 @@ public class InsertarUsuario extends RapicoopDatabase{
 
         if (cursoroferta.moveToFirst()){
             do {
-                carro = new Carrito();
-                carro.setVendedor(cursoroferta.getString(1));
-                carro.setConsumidor(cursoroferta.getString(2));
-                carro.setProducto(cursoroferta.getString(3));
-                carro.setCantidad(cursoroferta.getInt(4));
-                listacarrito.add(carro);
+
+                    carro = new Carrito();
+                    carro.setVendedor(cursoroferta.getString(1));
+                    carro.setConsumidor(cursoroferta.getString(2));
+                    carro.setProducto(cursoroferta.getString(3));
+                    carro.setCantidad(cursoroferta.getInt(4));
+                if (verificacarroferta(carro.getProducto())) {
+                    listacarrito.add(carro);
+                }else{
+                    db.execSQL("DELETE FROM " + TABLE_CARRITO + " WHERE id = '" + cursoroferta.getInt(0) + "'");
+                }
             }   while (cursoroferta.moveToNext());
         }
 
@@ -373,6 +379,19 @@ public class InsertarUsuario extends RapicoopDatabase{
 
 
         cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_CARRITO + " WHERE vendedor LIKE '" + vende + "' AND cliente LIKE '" + usu + "' AND oferta LIKE '" + name + "'",null);
+
+
+        return cursorUsuarios.moveToFirst();
+    }
+
+    public Boolean verificacarroferta(String name){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+        Cursor cursorUsuarios = null;
+
+
+        cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_OFERTA + " WHERE nombre LIKE '" + name + "'",null);
 
 
         return cursorUsuarios.moveToFirst();

@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.example.rapicoop.db.InsertarUsuario;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -46,7 +45,7 @@ public class Ofertarcomida extends AppCompatActivity {
         setContentView(R.layout.activity_ofertarcomida);
 
         subir = (Button) findViewById(R.id.subir);
-        enviar = (Button) findViewById(R.id.enviar);
+        enviar = (Button) findViewById(R.id.Buscar);
         image = (ImageView) findViewById(R.id.seleccion);
 
         name = (EditText) findViewById(R.id.name);

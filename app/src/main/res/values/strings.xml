@@ -9,4 +9,14 @@
         <item>Postres</item>
 
     </string-array>
+
+    <string-array name="buscar">
+
+        <item>Todos los productos</item>
+        <item>Comida rapida</item>
+        <item>Ensalada</item>
+        <item>Bebida</item>
+        <item>Postres</item>
+
+    </string-array>
 </resources>
