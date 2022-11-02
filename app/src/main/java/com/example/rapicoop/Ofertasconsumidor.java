@@ -32,7 +32,7 @@ public class Ofertasconsumidor extends AppCompatActivity {
 
     TextView usu, tipo;
     Spinner busqueda;
-    Button buscar;
+    ImageButton buscar;
     ImageButton compra;
 
     @Override
@@ -48,7 +48,7 @@ public class Ofertasconsumidor extends AppCompatActivity {
         listaofertas = new ArrayList<Oferta>();
 
         busqueda = (Spinner) findViewById(R.id.categoria);
-        buscar = (Button) findViewById(R.id.Buscar);
+        buscar = (ImageButton) findViewById(R.id.Buscar);
         usu = (TextView) findViewById(R.id.usuario);
         tipo = (TextView) findViewById(R.id.tipo);
         compra = (ImageButton) findViewById(R.id.compra);
