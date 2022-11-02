@@ -74,18 +74,6 @@ public class Ofertasconsumidor extends AppCompatActivity {
             }
         });
 
-
-        adaptadorLista.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Oferta oferta = listaofertas.get(recyclerView.getChildAdapterPosition(view));
-                Intent i = new Intent(Ofertasconsumidor.this, DescripcionOferta.class);
-                String[] cap = {oferta.getNombre(),usuario};
-                i.putExtra(String.valueOf(DescripcionOferta.EXTRA_MESSAGE), cap);
-                startActivity(i);
-            }
-        });
-
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,6 +84,27 @@ public class Ofertasconsumidor extends AppCompatActivity {
                 }else {
                     initbusqueda(catgtxt);
                 }
+                adaptadorLista.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Oferta oferta = listaofertas.get(recyclerView.getChildAdapterPosition(view));
+                        Intent i = new Intent(Ofertasconsumidor.this, DescripcionOferta.class);
+                        String[] cap = {oferta.getNombre(),usuario};
+                        i.putExtra(String.valueOf(DescripcionOferta.EXTRA_MESSAGE), cap);
+                        startActivity(i);
+                    }
+                });
+            }
+        });
+
+        adaptadorLista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Oferta oferta = listaofertas.get(recyclerView.getChildAdapterPosition(view));
+                Intent i = new Intent(Ofertasconsumidor.this, DescripcionOferta.class);
+                String[] cap = {oferta.getNombre(),usuario};
+                i.putExtra(String.valueOf(DescripcionOferta.EXTRA_MESSAGE), cap);
+                startActivity(i);
             }
         });
 
