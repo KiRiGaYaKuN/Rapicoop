@@ -9,16 +9,18 @@
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="177dp"
-        android:layout_height="57dp"
+        android:layout_width="206dp"
+        android:layout_height="51dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:text="Lista de ofertas"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="LISTA DE OFERTAS"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.396"
+        app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
@@ -30,7 +32,7 @@
         android:layout_marginEnd="44dp"
         android:text="Usuario"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="#3AB0FF"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,67 +62,31 @@
         android:text="Consumidor"
         android:textAlignment="center"
         android:textSize="15dp"
-        android:textStyle="normal"
+        android:textStyle="normal|bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usuario"
         tools:ignore="MissingConstraints" />
-
-    <Spinner
-        android:id="@+id/categoria"
-        style="@style/Widget.AppCompat.TextView.SpinnerItem"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/style_borde"
-        android:backgroundTint="#FFB562"
-        android:contentDescription="@string/app_name"
-        android:ellipsize="end"
-        android:entries="@array/buscar"
-        android:gravity="center_vertical"
-        android:lines="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Buscar"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/Buscar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:backgroundTint="#F87474"
-        android:text="Buscar"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoria"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.17"
         tools:ignore="MissingConstraints" />
 
     <ImageButton
         android:id="@+id/compra"
-        android:layout_width="50dp"
-        android:layout_height="48dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/carrito_de_compras"
+        android:backgroundTint="#070707"
         android:contentDescription="carrito"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -128,5 +94,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        tools:layout_editor_absoluteX="0dp">
+
+        <Spinner
+            android:id="@+id/categoria"
+            style="@style/Widget.AppCompat.TextView.SpinnerItem"
+            android:layout_width="359dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="@drawable/style_borde"
+            android:contentDescription="@string/app_name"
+            android:ellipsize="end"
+            android:entries="@array/buscar"
+            android:lines="1"
+            android:padding="5dp"
+            android:paddingLeft="5dp"
+            android:textAlignment="center" />
+
+        <ImageButton
+            android:id="@+id/Buscar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="@drawable/lupa"
+            android:backgroundTint="#F87474"
+            android:padding="5dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
