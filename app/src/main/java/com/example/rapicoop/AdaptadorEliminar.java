@@ -3,20 +3,15 @@ package com.example.rapicoop;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -78,7 +73,7 @@ public class AdaptadorEliminar extends RecyclerView.Adapter<AdaptadorEliminar.Vi
         ViewHolder(View itemView){
             super(itemView);
             Icono = itemView.findViewById(R.id.logo);
-            nombrerestaurante = itemView.findViewById(R.id.nombrerestaurante);
+            nombrerestaurante = itemView.findViewById(R.id.direccion13);
             horario = itemView.findViewById(R.id.precio);
             estadorestaurante = itemView.findViewById(R.id.botoneliminar);
 

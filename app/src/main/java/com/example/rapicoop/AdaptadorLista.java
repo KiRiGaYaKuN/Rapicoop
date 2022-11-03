@@ -1,20 +1,15 @@
 package com.example.rapicoop;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rapicoop.db.InsertarUsuario;
@@ -78,7 +73,7 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHold
         ViewHolder(View itemView){
             super(itemView);
             Icono = itemView.findViewById(R.id.Icono);
-            nombrerestaurante = itemView.findViewById(R.id.nombrerestaurante);
+            nombrerestaurante = itemView.findViewById(R.id.direccion13);
             horario = itemView.findViewById(R.id.textohorario);
             estadorestaurante = itemView.findViewById(R.id.estadorestaurante);
 
