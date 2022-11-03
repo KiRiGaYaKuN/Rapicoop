@@ -33,8 +33,7 @@ android:background="#F9F2ED">
                 android:layout_centerVertical="true"
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp"
-                tools:srcCompat="@android:drawable/ic_input_add"
-                tools:visibility="invisible" />
+                app:srcCompat="@drawable/mapa" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"

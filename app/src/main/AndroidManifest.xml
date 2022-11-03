@@ -16,6 +16,9 @@
         android:theme="@style/Theme.RapiCoop"
         tools:targetApi="31">
         <activity
+            android:name=".listadir"
+            android:exported="false" />
+        <activity
             android:name=".eliminarofertav"
             android:exported="false" />
         <activity
