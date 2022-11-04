@@ -1,9 +1,7 @@
 package com.example.rapicoop;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -36,7 +34,7 @@ public class DescripcionOferta extends AppCompatActivity {
 
         Oferta oferta = iu.consultanombre(nombre);
 
-        TextView name = (TextView) findViewById(R.id.name);
+        TextView name = (TextView) findViewById(R.id.ubi);
         TextView precio = (TextView) findViewById(R.id.precio);
         TextView ubi = (TextView) findViewById(R.id.gps);
         TextView descripcion = (TextView) findViewById(R.id.description);

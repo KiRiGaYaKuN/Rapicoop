@@ -8,7 +8,7 @@
     android:background="#F9F2ED">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/listadedirecciones"
         android:layout_width="410dp"
         android:layout_height="330dp"
         android:layout_marginTop="12dp"
@@ -42,18 +42,20 @@
         app:srcCompat="@drawable/pin_de_ubicacion" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/anadir"
         android:layout_width="255dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="52dp"
         android:background="@drawable/style_borde"
         android:backgroundTint="#FFB562"
         android:text="Añadir una nueva direccion"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-        app:layout_constraintVertical_bias="0.336"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="78dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listadedirecciones"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -73,7 +73,7 @@ public class AdaptadorEliminar extends RecyclerView.Adapter<AdaptadorEliminar.Vi
         ViewHolder(View itemView){
             super(itemView);
             Icono = itemView.findViewById(R.id.logo);
-            nombrerestaurante = itemView.findViewById(R.id.direccion13);
+            nombrerestaurante = itemView.findViewById(R.id.nombreubi);
             horario = itemView.findViewById(R.id.precio);
             estadorestaurante = itemView.findViewById(R.id.botoneliminar);
 

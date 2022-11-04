@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import com.example.rapicoop.Carrito;
 import com.example.rapicoop.DescripcionOferta;
 import com.example.rapicoop.Oferta;
+import com.example.rapicoop.listadirecciones;
 
 import java.util.ArrayList;
 
@@ -137,6 +138,7 @@ public class InsertarUsuario extends RapicoopDatabase{
         return correct;
     }
 
+
     //Consultas
 
     public ArrayList<Oferta> consultaconsume(){
@@ -256,6 +258,32 @@ public class InsertarUsuario extends RapicoopDatabase{
         cursoroferta.close();
 
         return listacarrito;
+    }
+
+    public ArrayList<listadirecciones> consultaubi(String usu){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+
+        listadirecciones listadir = null;
+        Cursor cursoroferta = null;
+
+        ArrayList<listadirecciones> lista = new ArrayList<listadirecciones>();
+
+        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_UBICACIONES + " WHERE usuario LIKE '" + usu + "'",null);
+
+        if (cursoroferta.moveToFirst()){
+            do {
+                listadir = new listadirecciones();
+                listadir.setNombre(cursoroferta.getString(2));
+                listadir.setDireccion(cursoroferta.getString(3));
+                lista.add(listadir);
+            }   while (cursoroferta.moveToNext());
+        }
+
+        cursoroferta.close();
+
+        return lista;
     }
 
     //carrito
@@ -396,5 +424,59 @@ public class InsertarUsuario extends RapicoopDatabase{
 
         return cursorUsuarios.moveToFirst();
     }
+
+    public int idproducto(String usu, String vende, String name){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+        Cursor cursorUsuarios = null;
+
+
+        cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_CARRITO + " WHERE vendedor LIKE '" + vende + "' AND cliente LIKE '" + usu + "' AND oferta LIKE '" + name + "'",null);
+
+        cursorUsuarios.moveToFirst();
+
+        return cursorUsuarios.getInt(0);
+    }
+
+    public String idbusca(int id){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+        Cursor cursorUsuarios = null;
+
+
+        cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_CARRITO + " WHERE id = '" + id + "'",null);
+
+        cursorUsuarios.moveToFirst();
+
+        return cursorUsuarios.getString(2);
+    }
+
+    //ubicaciones
+
+    public long agregaUbi (String usuario, String nombre, String ubi){
+
+        long id = 0;
+
+        try {
+
+            RapicoopDatabase rapidb = new RapicoopDatabase(context);
+            SQLiteDatabase db = rapidb.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            values.put("usuario", usuario);
+            values.put("nombre", nombre);
+            values.put("direccion", ubi);
+
+            id = db.insert(TABLE_UBICACIONES, null, values);
+        }catch (Exception ex){
+            ex.toString();
+        }
+
+        return id;
+    }
+
+
 
 }

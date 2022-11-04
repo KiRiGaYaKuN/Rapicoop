@@ -23,10 +23,10 @@ public class SigIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sig_in);
 
-        crear = (Button) findViewById(R.id.sigin);
+        crear = (Button) findViewById(R.id.agregar);
 
-        usr = (EditText) findViewById(R.id.user);
-        fname = (EditText) findViewById(R.id.name);
+        usr = (EditText) findViewById(R.id.namedir);
+        fname = (EditText) findViewById(R.id.ubi);
         sname = (EditText) findViewById(R.id.apllido);
         correo = (EditText) findViewById(R.id.email);
         telefono = (EditText) findViewById(R.id.cel);

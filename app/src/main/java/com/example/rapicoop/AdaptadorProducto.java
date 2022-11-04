@@ -52,17 +52,18 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView Icono;
         TextView nproducto, precio, descripcion, cantidad;
-        Button mas, menos;
+        Button mas, menos, comprar;
 
         ViewHolder(View itemView){
             super(itemView);
-          Icono = itemView.findViewById(R.id.icono);
+            Icono = itemView.findViewById(R.id.icono);
             nproducto = itemView.findViewById(R.id.item_nombre);
             precio = itemView.findViewById(R.id.item_precio);
             descripcion = itemView.findViewById(R.id.item_descripcion);
             cantidad = itemView.findViewById(R.id.contadorproducto);
             mas = (Button) itemView.findViewById(R.id.Buttonplus);
             menos = (Button) itemView.findViewById(R.id.Buttonminus);
+            comprar = (Button) itemView.findViewById(R.id.comprar);
 
         }
         void bindData(final Listaproducto item) {
@@ -71,6 +72,20 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
             precio.setText(item.getprecio());
             descripcion.setText(item.getdescripcion());
             cantidad.setText(item.getCantidad());
+
+            comprar.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view) {
+
+                    Intent i = new Intent(context, listadir.class);
+                    RapicoopDatabase rapidb = new RapicoopDatabase(context);
+                    InsertarUsuario iu = new InsertarUsuario(context);
+                    String id = iu.idproducto(item.getConsumidor(),item.getVendedor(),item.getnproducto()) + "";
+                    i.putExtra(listadir.EXTRA_CODE,id);
+                    context.startActivity(i);
+                }
+            });
 
             mas.setOnClickListener(new View.OnClickListener(){
 

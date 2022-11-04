@@ -3,7 +3,6 @@ package com.example.rapicoop;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +28,7 @@ public class LogIn extends AppCompatActivity {
         RapicoopDatabase rapidb = new RapicoopDatabase(LogIn.this);
         // SQLiteDatabase db = rapidb.getWritableDatabase();
 
-        sigin =(Button)findViewById(R.id.sigin);
+        sigin =(Button)findViewById(R.id.agregar);
         ingresar = (Button) findViewById(R.id.ingresar);
 
         pasword = (EditText) findViewById(R.id.password);
@@ -54,17 +53,24 @@ public class LogIn extends AppCompatActivity {
 
                 if (iu.verificar(pasword.getText().toString(), usuario.getText().toString())) {
 
-                    String rol = "vendedor";
+                    String usu = usuario.getText().toString();
+
                     if(iu.devolver(usuario.getText().toString()).equals("Vendedor")) {
+                        usuario.setText("");
+                        pasword.setText("");
                         Intent i = new Intent(LogIn.this, Vendedor.class);
-                        i.putExtra(Vendedor.EXTRA_MESSAGE, usuario.getText().toString());
+                        i.putExtra(Vendedor.EXTRA_MESSAGE, usu);
                         startActivity(i);
+                    }else{
+                        if(iu.devolver(usuario.getText().toString()).equals("Consumidor")) {
+                            usuario.setText("");
+                            pasword.setText("");
+                            Intent i = new Intent(LogIn.this, Consumidor.class);
+                            i.putExtra(Consumidor.EXTRA_MESSAGE, usu);
+                            startActivity(i);
+                        }
                     }
-                    if(iu.devolver(usuario.getText().toString()).equals("Consumidor")) {
-                        Intent i = new Intent(LogIn.this, Consumidor.class);
-                        i.putExtra(Consumidor.EXTRA_MESSAGE, usuario.getText().toString());
-                        startActivity(i);
-                    }
+
 
                 }else{
                     Toast.makeText(LogIn.this, "Credenciales invalidas", Toast.LENGTH_LONG).show();

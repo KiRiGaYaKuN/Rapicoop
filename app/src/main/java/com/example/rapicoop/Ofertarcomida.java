@@ -48,7 +48,7 @@ public class Ofertarcomida extends AppCompatActivity {
         enviar = (Button) findViewById(R.id.Buscar);
         image = (ImageView) findViewById(R.id.seleccion);
 
-        name = (EditText) findViewById(R.id.name);
+        name = (EditText) findViewById(R.id.ubi);
         categoria = (Spinner) findViewById(R.id.spinner);
         precio = (EditText) findViewById(R.id.precio);
         ubicacion = (EditText) findViewById(R.id.ubicacion);
