@@ -16,6 +16,9 @@
         android:theme="@style/Theme.RapiCoop"
         tools:targetApi="31">
         <activity
+            android:name=".ofertasaceptadas"
+            android:exported="false" />
+        <activity
             android:name=".AgregarDireccion"
             android:exported="false" />
         <activity
