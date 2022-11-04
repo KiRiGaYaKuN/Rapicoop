@@ -227,6 +227,8 @@ public class InsertarUsuario extends RapicoopDatabase{
         return oferta;
     }
 
+
+
     public ArrayList<Carrito> consultacarro(String usu){
 
         RapicoopDatabase rapidb = new RapicoopDatabase(context);
@@ -258,6 +260,30 @@ public class InsertarUsuario extends RapicoopDatabase{
         cursoroferta.close();
 
         return listacarrito;
+    }
+
+    public Carrito consultacarro(int id){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+
+        Carrito carro = new Carrito();
+        Cursor cursoroferta = null;
+
+        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_CARRITO + " WHERE id = '" + id + "'",null);
+
+        if (cursoroferta.moveToFirst()){
+            do {
+                carro.setVendedor(cursoroferta.getString(1));
+                carro.setConsumidor(cursoroferta.getString(2));
+                carro.setProducto(cursoroferta.getString(3));
+                carro.setCantidad(cursoroferta.getInt(4));
+            }   while (cursoroferta.moveToNext());
+        }
+
+        cursoroferta.close();
+
+        return carro;
     }
 
     public ArrayList<listadirecciones> consultaubi(String usu){

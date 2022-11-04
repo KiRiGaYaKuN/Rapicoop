@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 public class ofertasaceptadas extends AppCompatActivity {
 
+    public static final String EXTRA_MESSAGE="mesagge";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

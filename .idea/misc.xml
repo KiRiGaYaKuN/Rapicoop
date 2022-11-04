@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Kirito/Documents/proyectos android/RapiCoop/app/src/main/res/drawable/style_borde.xml" value="0.2595" />
+        <entry key="..\:/Users/Kirito/Documents/proyectos android/RapiCoop/app/src/main/res/layout/activity_aceptar_oferta.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Kirito/Documents/proyectos android/RapiCoop/app/src/main/res/layout/activity_agregar_direccion.xml" value="0.4282238442822384" />
         <entry key="..\:/Users/Kirito/Documents/proyectos android/RapiCoop/app/src/main/res/layout/activity_carritodecompras.xml" value="0.3625" />
         <entry key="..\:/Users/Kirito/Documents/proyectos android/RapiCoop/app/src/main/res/layout/activity_consumidor.xml" value="0.2857789855072464" />
@@ -13,6 +14,7 @@
         <entry key="..\:/Users/Kirito/Documents/proyectos android/RapiCoop/app/src/main/res/layout/activity_listadir.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Kirito/Documents/proyectos android/RapiCoop/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Kirito/Documents/proyectos android/RapiCoop/app/src/main/res/layout/activity_ofertarcomida.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Kirito/Documents/proyectos android/RapiCoop/app/src/main/res/layout/activity_ofertasaceptadas.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Kirito/Documents/proyectos android/RapiCoop/app/src/main/res/layout/activity_ofertasconsumidor.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Kirito/Documents/proyectos android/RapiCoop/app/src/main/res/layout/activity_sig_in.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/Kirito/Documents/proyectos android/RapiCoop/app/src/main/res/layout/activity_vendedor.xml" value="0.2857789855072464" />
@@ -29,7 +31,6 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/Rapicoop/app/src/main/res/layout/activity_log_in.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Rapicoop/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Rapicoop/app/src/main/res/layout/activity_ofertarcomida.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/Rapicoop/app/src/main/res/layout/activity_ofertasaceptadas.xml" value="0.3283514492753623" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Rapicoop/app/src/main/res/layout/activity_ofertasconsumidor.xml" value="0.5" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Rapicoop/app/src/main/res/layout/activity_sig_in.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Rapicoop/app/src/main/res/layout/activity_vendedor.xml" value="0.36666666666666664" />

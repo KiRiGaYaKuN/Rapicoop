@@ -15,6 +15,7 @@ public class Consumidor extends AppCompatActivity {
     Button consulta;
     Button carrito;
     Button cerrar;
+    Button ofertas;
     public static final String EXTRA_MESSAGE="mesagge";
 
     @Override
@@ -25,6 +26,7 @@ public class Consumidor extends AppCompatActivity {
         consulta = (Button) findViewById(R.id.consultarcomida);
         carrito = (Button) findViewById(R.id.consultacarrito);
         cerrar = (Button) findViewById(R.id.cerrar);
+        ofertas = (Button) findViewById(R.id.aceptado);
 
         Intent intent=getIntent();
         String usuario = intent.getStringExtra(EXTRA_MESSAGE);
@@ -45,6 +47,16 @@ public class Consumidor extends AppCompatActivity {
 
                 Intent i = new Intent(Consumidor.this, carritodecompras.class);
                 i.putExtra(carritodecompras.EXTRA_MESSAGE, usuario);
+                startActivity(i);
+            }
+        });
+
+        ofertas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(Consumidor.this, ofertasaceptadas.class);
+                i.putExtra(ofertasaceptadas.EXTRA_MESSAGE, usuario);
                 startActivity(i);
             }
         });

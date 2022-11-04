@@ -61,7 +61,11 @@ public class listadir extends AppCompatActivity {
         adaptadorDirecciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                listadirecciones seleccion = listadir.get(recyclerView.getChildAdapterPosition(view));
+                Intent i = new Intent(listadir.this, AceptarOferta.class);
+                String[] cap = {seleccion.getDireccion(),id};
+                i.putExtra(String.valueOf(DescripcionOferta.EXTRA_MESSAGE), cap);
+                startActivity(i);
             }
         });
 
