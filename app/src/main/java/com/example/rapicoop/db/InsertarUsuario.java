@@ -227,8 +227,6 @@ public class InsertarUsuario extends RapicoopDatabase{
         return oferta;
     }
 
-
-
     public ArrayList<Carrito> consultacarro(String usu){
 
         RapicoopDatabase rapidb = new RapicoopDatabase(context);

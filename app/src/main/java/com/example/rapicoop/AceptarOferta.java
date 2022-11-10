@@ -46,7 +46,7 @@ public class AceptarOferta extends AppCompatActivity {
         Button aceptar = (Button) findViewById(R.id.eliminarbtn);
 
         name.setText(carro.getProducto());
-        ubi.setText(ubicacion);
+        ubi.setText("Dirección de entrega: " + ubicacion);
         cantidad.setText("Cantidad: " + carro.getCantidad());
         fijo.setText("Precio Uni: " + oferta.getPrecio());
         total.setText("Precio Total: " + (oferta.getPrecio()*carro.getCantidad()));
