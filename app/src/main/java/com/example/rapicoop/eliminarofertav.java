@@ -23,10 +23,6 @@ import java.util.List;
 
 public class eliminarofertav extends AppCompatActivity {
 
-
-
-
-
     public static final String EXTRA_MESSAGE="mesagge";
     List<Listadeelementos> elements;
     ArrayList<Oferta> listaofertas;

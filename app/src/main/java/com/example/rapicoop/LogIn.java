@@ -68,6 +68,14 @@ public class LogIn extends AppCompatActivity {
                             Intent i = new Intent(LogIn.this, Consumidor.class);
                             i.putExtra(Consumidor.EXTRA_MESSAGE, usu);
                             startActivity(i);
+                        }else {
+                            if(iu.devolver(usuario.getText().toString()).equals("Domiciliario")) {
+                                usuario.setText("");
+                                pasword.setText("");
+                                Intent i = new Intent(LogIn.this, Domilciliario.class);
+                                i.putExtra(Consumidor.EXTRA_MESSAGE, usu);
+                                startActivity(i);
+                            }
                         }
                     }
 

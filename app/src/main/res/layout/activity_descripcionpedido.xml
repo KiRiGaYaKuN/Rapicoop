@@ -59,9 +59,10 @@
                 android:id="@+id/gps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pizzas la esquina"
+                android:text="Direccion de salida:"
                 android:textAlignment="center"
-                android:textAllCaps="true" />
+                android:textAllCaps="true"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -77,6 +78,8 @@
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:text="Direccion de entrega:"
+                android:textSize="14sp"
+                android:textAllCaps="true"
                 android:textAlignment="center"
                 android:textStyle="bold" />
 

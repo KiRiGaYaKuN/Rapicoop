@@ -21,7 +21,7 @@ public class Vendedor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendedor);
 
-        ofertar = (Button) findViewById(R.id.OfertarComida);
+        ofertar = (Button) findViewById(R.id.pedido);
         eliminar = (Button) findViewById(R.id.eliminar);
         cerrar = (Button) findViewById(R.id.cerrar);
 

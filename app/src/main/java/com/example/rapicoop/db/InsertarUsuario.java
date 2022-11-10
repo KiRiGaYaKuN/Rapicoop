@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import com.example.rapicoop.Carrito;
 import com.example.rapicoop.DescripcionOferta;
 import com.example.rapicoop.Oferta;
+import com.example.rapicoop.OfertaAceptada;
 import com.example.rapicoop.listadirecciones;
 
 import java.util.ArrayList;
@@ -186,6 +187,70 @@ public class InsertarUsuario extends RapicoopDatabase{
                 oferta.setPrecio(cursoroferta.getInt(4));
                 oferta.setUbicacion(cursoroferta.getString(5));
                 oferta.setImagen(cursoroferta.getBlob(7));
+                listaofertas.add(oferta);
+            }   while (cursoroferta.moveToNext());
+        }
+
+        cursoroferta.close();
+
+        return listaofertas;
+    }
+
+    public ArrayList<OfertaAceptada> consultaaceptadas( String usu ){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+
+        ArrayList<OfertaAceptada> listaofertas = new ArrayList<OfertaAceptada>();
+
+        OfertaAceptada oferta = null;
+        Cursor cursoroferta = null;
+
+        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_ACEPTADO + " WHERE cliente LIKE '" + usu + "'",null);
+
+        if (cursoroferta.moveToFirst()){
+            do {
+                oferta = new OfertaAceptada();
+                oferta.setId(cursoroferta.getInt(0));
+                oferta.setOferta(cursoroferta.getString(1));
+                oferta.setCliente(cursoroferta.getString(2));
+                oferta.setUbicacion(cursoroferta.getString(3));
+                oferta.setCantidad(cursoroferta.getInt(4));
+                oferta.setPrecio(cursoroferta.getInt(5));
+                oferta.setDomiciliario(cursoroferta.getString(6));
+                oferta.setEstado(cursoroferta.getString(7));
+                listaofertas.add(oferta);
+            }   while (cursoroferta.moveToNext());
+        }
+
+        cursoroferta.close();
+
+        return listaofertas;
+    }
+
+    public ArrayList<OfertaAceptada> consultaespera(){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+
+        ArrayList<OfertaAceptada> listaofertas = new ArrayList<OfertaAceptada>();
+
+        OfertaAceptada oferta = null;
+        Cursor cursoroferta = null;
+
+        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_ACEPTADO + " WHERE estado LIKE '" + "espera" + "'",null);
+
+        if (cursoroferta.moveToFirst()){
+            do {
+                oferta = new OfertaAceptada();
+                oferta.setId(cursoroferta.getInt(0));
+                oferta.setOferta(cursoroferta.getString(1));
+                oferta.setCliente(cursoroferta.getString(2));
+                oferta.setUbicacion(cursoroferta.getString(3));
+                oferta.setCantidad(cursoroferta.getInt(4));
+                oferta.setPrecio(cursoroferta.getInt(5));
+                oferta.setDomiciliario(cursoroferta.getString(6));
+                oferta.setEstado(cursoroferta.getString(7));
                 listaofertas.add(oferta);
             }   while (cursoroferta.moveToNext());
         }

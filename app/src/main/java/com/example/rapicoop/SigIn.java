@@ -16,7 +16,7 @@ public class SigIn extends AppCompatActivity {
 
     Button crear;
     EditText usr, fname, sname, correo, telefono, psw;
-    RadioButton vende, compra;
+    RadioButton vende, compra, domi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class SigIn extends AppCompatActivity {
 
         vende = (RadioButton) findViewById(R.id.vende);
         compra = (RadioButton) findViewById(R.id.compra);
+        domi = (RadioButton) findViewById(R.id.domi);
 
 
         crear.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +54,10 @@ public class SigIn extends AppCompatActivity {
                 }else{
                     if(compra.isChecked() == true){
                         rol = "Consumidor";
+                    }else {
+                        if(domi.isChecked() == true){
+                            rol = "Domiciliario";
+                        }
                     }
                 }
 
@@ -69,7 +74,11 @@ public class SigIn extends AppCompatActivity {
                 }
             }
         });
+    }
 
-
+    @Override
+    protected void onStop() {
+        finish();
+        super.onStop();
     }
 }
