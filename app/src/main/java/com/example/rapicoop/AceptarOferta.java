@@ -66,9 +66,19 @@ public class AceptarOferta extends AppCompatActivity {
                         .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(AceptarOferta.this, "Agregado", Toast.LENGTH_LONG).show();
-                                init.putExtra(Consumidor.EXTRA_MESSAGE, carro.getConsumidor());
-                                startActivity(init);
+
+                                long id = iu.aceptarOferta(carro.getProducto(),carro.getConsumidor(),ubicacion,carro.getCantidad(),(oferta.getPrecio()*carro.getCantidad()),"espera");
+
+                                if(id > 0){
+                                    Toast.makeText(AceptarOferta.this, "Oferta aceptada", Toast.LENGTH_SHORT).show();
+                                    if (iu.eliminarcarrito (carro.getConsumidor(), carro.getProducto())){Toast.makeText(AceptarOferta.this, "Carrito eliminado", Toast.LENGTH_SHORT).show();}
+                                    init.putExtra(Consumidor.EXTRA_MESSAGE, carro.getConsumidor());
+                                    startActivity(init);
+                                    finish();
+                                }else {
+                                    Toast.makeText(AceptarOferta.this, "Oferta rechazada", Toast.LENGTH_LONG).show();
+                                }
+
                                 dialogInterface.cancel();
                                 finish();
                             }

@@ -138,6 +138,30 @@ public class InsertarUsuario extends RapicoopDatabase{
         return correct;
     }
 
+    public long aceptarOferta (String oferta, String cliente, String ubicacion, int cantidad, int precio, String estado){
+
+        long id = 0;
+
+        try {
+
+            RapicoopDatabase rapidb = new RapicoopDatabase(context);
+            SQLiteDatabase db = rapidb.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            values.put("oferta", oferta);
+            values.put("cliente", cliente);
+            values.put("ubicacion", ubicacion);
+            values.put("cantidad", cantidad);
+            values.put("precio", precio);
+            values.put("estado", estado);
+
+            id = db.insert(TABLE_ACEPTADO, null, values);
+        }catch (Exception ex){
+            ex.toString();
+        }
+
+        return id;
+    }
 
     //Consultas
 
@@ -418,6 +442,35 @@ public class InsertarUsuario extends RapicoopDatabase{
 
         }catch (Exception ex){
             ex.toString();
+        }
+
+        return correct;
+    }
+
+    public boolean eliminarcarrito (String usu, String name){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+        boolean correct = false;
+        Cursor cursorUsuarios = null;
+
+        try {
+            cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_CARRITO + " WHERE cliente LIKE '" + usu + "' AND oferta LIKE '" + name + "'",null);
+
+
+
+            if (cursorUsuarios.moveToFirst()){
+                do {
+                        int ident = cursorUsuarios.getInt(0);
+                        db.execSQL("DELETE FROM " + TABLE_CARRITO + " WHERE id = '" + ident + "'");
+                        return true;
+                }   while (cursorUsuarios.moveToNext());
+            }
+
+        }catch (Exception ex){
+            ex.toString();
+        }finally {
+            db.close();
         }
 
         return correct;
