@@ -16,6 +16,18 @@
         android:theme="@style/Theme.RapiCoop"
         tools:targetApi="31">
         <activity
+            android:name=".Itempedidosespera"
+            android:exported="false" />
+        <activity
+            android:name=".Pedidosdomi"
+            android:exported="false" />
+        <activity
+            android:name=".descripcionpedido"
+            android:exported="false" />
+        <activity
+            android:name=".Domilciliario"
+            android:exported="false" />
+        <activity
             android:name=".AceptarOferta"
             android:exported="false" />
         <activity
