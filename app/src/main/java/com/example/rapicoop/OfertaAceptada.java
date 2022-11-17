@@ -10,6 +10,9 @@ public class OfertaAceptada {
     private int precio;
     private String domiciliario;
     private String estado;
+    private String inicio;
+    private String duracion;
+    private String fin;
 
     public int getId() {
         return id;
@@ -17,6 +20,30 @@ public class OfertaAceptada {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getInicio() {
+        return inicio;
+    }
+
+    public void setInicio(String inicio) {
+        this.inicio = inicio;
+    }
+
+    public String getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(String duracion) {
+        this.duracion = duracion;
+    }
+
+    public String getFin() {
+        return fin;
+    }
+
+    public void setFin(String fin) {
+        this.fin = fin;
     }
 
     public String getOferta() {

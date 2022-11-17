@@ -164,6 +164,69 @@ public class InsertarUsuario extends RapicoopDatabase{
         return id;
     }
 
+    public boolean aceptarpedido (String usu, int idnt, String est,String time){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+        boolean correct = false;
+        Cursor cursorUsuarios = null;
+
+        try {
+            db.execSQL("UPDATE " + TABLE_ACEPTADO + " SET domiciliario = '" + usu + "',estado = '" +est+ "',inicio = '" +time+ "' WHERE id = '" + idnt + "'");
+            correct = true;
+
+        }catch (Exception ex){
+            ex.toString();
+            correct = false;
+        }finally {
+            db.close();
+        }
+
+        return correct;
+    }
+
+    public boolean modestado (int idnt, String est){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+        boolean correct = false;
+        Cursor cursorUsuarios = null;
+
+        try {
+            db.execSQL("UPDATE " + TABLE_ACEPTADO + " SET estado = '" + est + "' WHERE id = '" + idnt + "'");
+            correct = true;
+
+        }catch (Exception ex){
+            ex.toString();
+            correct = false;
+        }finally {
+            db.close();
+        }
+
+        return correct;
+    }
+
+    public boolean modfinal (int idnt, String finde, String dura){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+        boolean correct = false;
+        Cursor cursorUsuarios = null;
+
+        try {
+            db.execSQL("UPDATE " + TABLE_ACEPTADO + " SET fin = '" + finde + "',duracion = '" + dura + "' WHERE id = '" + idnt + "'");
+            correct = true;
+
+        }catch (Exception ex){
+            ex.toString();
+            correct = false;
+        }finally {
+            db.close();
+        }
+
+        return correct;
+    }
+
     //Consultas
 
     public ArrayList<Oferta> consultaconsume(){
@@ -258,6 +321,105 @@ public class InsertarUsuario extends RapicoopDatabase{
         cursoroferta.close();
 
         return listaofertas;
+    }
+
+    public OfertaAceptada consultaesperaid(int idnt){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+
+        ArrayList<OfertaAceptada> listaofertas = new ArrayList<OfertaAceptada>();
+
+        OfertaAceptada oferta = null;
+        Cursor cursoroferta = null;
+
+        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_ACEPTADO + " WHERE id LIKE '" + idnt + "'",null);
+
+        if (cursoroferta.moveToFirst()){
+            do {
+                oferta = new OfertaAceptada();
+                oferta.setId(cursoroferta.getInt(0));
+                oferta.setOferta(cursoroferta.getString(1));
+                oferta.setCliente(cursoroferta.getString(2));
+                oferta.setUbicacion(cursoroferta.getString(3));
+                oferta.setCantidad(cursoroferta.getInt(4));
+                oferta.setPrecio(cursoroferta.getInt(5));
+                oferta.setDomiciliario(cursoroferta.getString(6));
+                oferta.setEstado(cursoroferta.getString(7));
+                listaofertas.add(oferta);
+            }   while (cursoroferta.moveToNext());
+        }
+
+        cursoroferta.close();
+
+        return oferta;
+    }
+
+    public OfertaAceptada consultaesperanombre(String domi){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+
+        ArrayList<OfertaAceptada> listaofertas = new ArrayList<OfertaAceptada>();
+
+        OfertaAceptada oferta = null;
+        Cursor cursoroferta = null;
+
+        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_ACEPTADO + " WHERE domiciliario LIKE '" + domi + "'",null);
+
+        if (cursoroferta.moveToFirst()){
+            do {
+                oferta = new OfertaAceptada();
+                oferta.setId(cursoroferta.getInt(0));
+                oferta.setOferta(cursoroferta.getString(1));
+                oferta.setCliente(cursoroferta.getString(2));
+                oferta.setUbicacion(cursoroferta.getString(3));
+                oferta.setCantidad(cursoroferta.getInt(4));
+                oferta.setPrecio(cursoroferta.getInt(5));
+                oferta.setDomiciliario(cursoroferta.getString(6));
+                oferta.setEstado(cursoroferta.getString(7));
+                listaofertas.add(oferta);
+            }   while (cursoroferta.moveToNext());
+        }
+
+        cursoroferta.close();
+
+        return oferta;
+    }
+
+    public OfertaAceptada consultaproceso(String domi){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+
+        ArrayList<OfertaAceptada> listaofertas = new ArrayList<OfertaAceptada>();
+
+        OfertaAceptada oferta = null;
+        Cursor cursoroferta = null;
+
+        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_ACEPTADO + " WHERE domiciliario LIKE '" + domi + "' AND (estado LIKE 'proceso' OR estado LIKE 'entregando')",null);
+
+        if (cursoroferta.moveToFirst()){
+            do {
+                oferta = new OfertaAceptada();
+                oferta.setId(cursoroferta.getInt(0));
+                oferta.setOferta(cursoroferta.getString(1));
+                oferta.setCliente(cursoroferta.getString(2));
+                oferta.setUbicacion(cursoroferta.getString(3));
+                oferta.setCantidad(cursoroferta.getInt(4));
+                oferta.setPrecio(cursoroferta.getInt(5));
+                oferta.setDomiciliario(cursoroferta.getString(6));
+                oferta.setEstado(cursoroferta.getString(7));
+                oferta.setInicio(cursoroferta.getString(8));
+                oferta.setFin(cursoroferta.getString(9));
+                oferta.setDuracion(cursoroferta.getString(10));
+                listaofertas.add(oferta);
+            }   while (cursoroferta.moveToNext());
+        }
+
+        cursoroferta.close();
+
+        return oferta;
     }
 
     public ArrayList<Oferta> consultavende(String usu){

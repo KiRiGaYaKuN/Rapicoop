@@ -48,7 +48,11 @@ public class Pedidosdomi extends AppCompatActivity {
         adaptadorLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                OfertaAceptada oferta = listaofertas.get(recyclerView.getChildAdapterPosition(view));
+                Intent i = new Intent(Pedidosdomi.this, descripcionpedido.class);
+                String[] cap = {oferta.getId()+"",usuario};
+                i.putExtra(String.valueOf(descripcionpedido.EXTRA_MESSAGE), cap);
+                startActivity(i);
             }
         });
     }
@@ -67,5 +71,11 @@ public class Pedidosdomi extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adaptadorLista);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
     }
 }

@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 public class RapicoopDatabase extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME="Rapicoop.db";
-    public static final int DATABASE_VERSION=20;
+    public static final int DATABASE_VERSION=21;
     public static final String TABLE_NAME="t_usuarios";
     public static final String TABLE_OFERTA="t_ofertas";
     public static final String TABLE_CARRITO="t_carrito";
@@ -39,7 +39,7 @@ public class RapicoopDatabase extends SQLiteOpenHelper {
                 + "nombre TEXT,direccion TEXT)");
 
         db.execSQL("create table " + TABLE_ACEPTADO + "(id INTEGER PRIMARY KEY AUTOINCREMENT,oferta TEXT,"
-                + "cliente TEXT,ubicacion TEXT,cantidad INTEGER, precio INTEGER,domiciliario TEXT, estado TEXT)");
+                + "cliente TEXT,ubicacion TEXT,cantidad INTEGER, precio INTEGER,domiciliario TEXT, estado TEXT, inicio TEXT, fin TEXT, duracion TEXT)");
 
     }
 

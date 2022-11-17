@@ -64,7 +64,7 @@
 
             <TextView
                 android:id="@+id/estadorestaurante"
-                android:layout_width="66dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="20dp"
@@ -74,9 +74,9 @@
                 android:layout_toEndOf="@+id/linearLayout"
                 android:background="@drawable/button_rounded"
                 android:backgroundTint="#FFB562"
-                android:textAllCaps="true"
                 android:text="Espera"
                 android:textAlignment="center"
+                android:textAllCaps="true"
                 android:textSize="15dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pedido"
+        app:layout_constraintTop_toBottomOf="@+id/entrega"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
@@ -49,11 +49,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pedido"
+        app:layout_constraintTop_toBottomOf="@+id/entrega"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/pedido"
+        android:id="@+id/entrega"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"

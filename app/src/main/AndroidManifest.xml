@@ -4,6 +4,9 @@
     package="com.example.rapicoop">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +18,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RapiCoop"
         tools:targetApi="31">
+        <service
+            android:name=".NotificarService"
+            android:exported="false"></service>
+
+        <activity
+            android:name=".Ubicacion"
+            android:exported="false" />
+        <activity
+            android:name=".Estado"
+            android:exported="false" />
+        <activity
+            android:name=".Ruta"
+            android:exported="false" />
         <activity
             android:name=".Itempedidosespera"
             android:exported="false" />
