@@ -45,7 +45,6 @@ public class Ruta extends AppCompatActivity {
                     .appendQueryParameter("origin", oferta.getUbicacion())
                     .appendQueryParameter("destination", ofertaA.getUbicacion());
             String url = builder.build().toString();
-            Log.d("Direccion", url);
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
             startActivity(intent);

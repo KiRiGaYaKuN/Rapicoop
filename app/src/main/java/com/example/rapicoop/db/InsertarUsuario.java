@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -781,6 +782,98 @@ public class InsertarUsuario extends RapicoopDatabase{
         return id;
     }
 
+    //estadisticas
 
+    public int[] estaemprende(String usu){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+
+        ArrayList<Oferta> listaofertas = new ArrayList<Oferta>();
+
+        Oferta oferta = null;
+        Cursor cursoroferta = null;
+
+        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_OFERTA + " WHERE usuario LIKE '" + usu + "'",null);
+
+        if (cursoroferta.moveToFirst()){
+            do {
+                oferta = new Oferta();
+                oferta.setUsuario(cursoroferta.getString(1));
+                oferta.setNombre(cursoroferta.getString(2));
+                oferta.setPrecio(cursoroferta.getInt(4));
+                oferta.setUbicacion(cursoroferta.getString(5));
+                oferta.setImagen(cursoroferta.getBlob(7));
+                listaofertas.add(oferta);
+            }   while (cursoroferta.moveToNext());
+        }
+
+        cursoroferta.close();
+
+        int valor = 0;
+        int cantidad = 0;
+        for (Oferta x:listaofertas
+             ) {
+
+            ArrayList<OfertaAceptada> listaofertasA = new ArrayList<OfertaAceptada>();
+
+            OfertaAceptada ofertaA = null;
+            Cursor cursor = null;
+
+            cursor = db.rawQuery("SELECT * FROM " + TABLE_ACEPTADO + " WHERE oferta LIKE '" + x.getNombre() + "' AND (estado <> 'espera')",null);
+
+            if (cursor.moveToFirst()){
+                do {
+                    ofertaA = new OfertaAceptada();
+                    ofertaA.setPrecio(cursor.getInt(5));
+                    cantidad++;
+                    valor = valor + ofertaA.getPrecio();
+                }   while (cursor.moveToNext());
+            }
+
+            cursor.close();
+
+        }
+
+        int [] resultado = new int[2];
+        resultado[0] = valor;
+        resultado[1] = cantidad;
+
+        return resultado;
+    }
+
+    public int[] estaconsumi(String usu){
+
+        RapicoopDatabase rapidb = new RapicoopDatabase(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+
+        int valor = 0;
+        int cantidad = 0;
+
+
+            OfertaAceptada ofertaA = null;
+            Cursor cursor = null;
+
+            cursor = db.rawQuery("SELECT * FROM " + TABLE_ACEPTADO + " WHERE cliente LIKE '" + usu + "' AND (estado <> 'espera')",null);
+
+            if (cursor.moveToFirst()){
+                do {
+                    ofertaA = new OfertaAceptada();
+                    ofertaA.setPrecio(cursor.getInt(5));
+                    cantidad++;
+                    valor = valor + ofertaA.getPrecio();
+                }   while (cursor.moveToNext());
+            }
+
+            cursor.close();
+
+
+
+        int [] resultado = new int[2];
+        resultado[0] = valor;
+        resultado[1] = cantidad;
+
+        return resultado;
+    }
 
 }

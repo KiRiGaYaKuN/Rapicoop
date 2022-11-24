@@ -50,7 +50,6 @@ public class NotificarService extends IntentService {
 
     public void mostrarTexto(String titulo,String texto){
 
-        Log.v(titulo,texto);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(chanel_id, "NEW", NotificationManager.IMPORTANCE_DEFAULT);

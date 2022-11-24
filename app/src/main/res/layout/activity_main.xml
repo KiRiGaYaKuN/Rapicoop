@@ -80,7 +80,7 @@
         android:text="Google"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/esta"
         app:srcCompat="@drawable/google" />
 
     <ImageButton
@@ -93,7 +93,7 @@
         android:scaleType="fitCenter"
         android:text="Twitter"
         app:layout_constraintStart_toEndOf="@+id/imageButton4"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/esta"
         app:srcCompat="@drawable/twitter" />
 
     <ImageButton
@@ -106,7 +106,7 @@
         android:scaleType="fitCenter"
         android:text="Facebook"
         app:layout_constraintEnd_toStartOf="@+id/imageButton4"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/esta"
         app:srcCompat="@drawable/facebook" />
 
     <ImageView
@@ -121,14 +121,14 @@
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/esta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/button_border"
-        android:text="¿Olvidó su contraseña?"
+        android:text="Estadisticas"
         android:textStyle="bold"
         android:backgroundTint="#3AB0FF"
         app:layout_constraintEnd_toEndOf="parent"

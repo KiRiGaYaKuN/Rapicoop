@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +17,7 @@ public class LogIn extends AppCompatActivity {
 
     Button sigin;
     Button ingresar;
+    Button estadistica;
 
     EditText usuario;
     EditText pasword;
@@ -30,6 +32,7 @@ public class LogIn extends AppCompatActivity {
 
         sigin =(Button)findViewById(R.id.agregar);
         ingresar = (Button) findViewById(R.id.ingresar);
+        estadistica = (Button) findViewById(R.id.esta);
 
         pasword = (EditText) findViewById(R.id.password);
         usuario = (EditText) findViewById(R.id.usuario);
@@ -40,6 +43,17 @@ public class LogIn extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent i = new Intent(LogIn.this, SigIn.class);
+                startActivity(i);
+            }
+        });
+
+        estadistica.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(LogIn.this, Estadisticas.class);
+                i.putExtra(Estadisticas.EXTRA_MESSAGE, usuario.getText().toString());
                 startActivity(i);
             }
         });

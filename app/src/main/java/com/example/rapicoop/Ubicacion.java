@@ -12,7 +12,6 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,7 +62,7 @@ public class Ubicacion extends AppCompatActivity {
             int se = calendario.get(Calendar.SECOND);
 
             latitud = (TextView) findViewById(R.id.latitud);
-            inicio = (TextView) findViewById(R.id.horainicio);
+            inicio = (TextView) findViewById(R.id.respuesta);
             duracion = (TextView) findViewById(R.id.duracion);
             longitud = (TextView) findViewById(R.id.logi);
             dir = (TextView) findViewById(R.id.dir);
@@ -145,4 +144,9 @@ public class Ubicacion extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        running = false;
+    }
 }

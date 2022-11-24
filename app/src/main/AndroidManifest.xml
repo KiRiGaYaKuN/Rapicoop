@@ -18,9 +18,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RapiCoop"
         tools:targetApi="31">
+        <activity
+            android:name=".Estadisticas"
+            android:exported="false" />
+
+        <service
+            android:name=".ServicioEstadisticas"
+            android:enabled="true"
+            android:exported="true" />
         <service
             android:name=".NotificarService"
-            android:exported="false"></service>
+            android:exported="false" />
 
         <activity
             android:name=".Ubicacion"
